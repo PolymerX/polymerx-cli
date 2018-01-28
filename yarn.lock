@@ -2182,9 +2182,9 @@ git-semver-tags@^1.2.3:
     meow "^3.3.0"
     semver "^5.0.1"
 
-git-user-local@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/git-user-local/-/git-user-local-0.1.0.tgz#f02431fd8a4e197be0e673e9925bd0f976677d25"
+git-user-local@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/git-user-local/-/git-user-local-0.2.0.tgz#bc4f12bb3d04766e5d1c336b55a1e74e3bf3e38b"
   dependencies:
     ini "1.3.5"
 
