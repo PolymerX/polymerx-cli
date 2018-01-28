@@ -1,0 +1,15 @@
+{
+  "comments": false,
+  "presets": [
+    ["env", {
+      "loose": true,
+      "targets": {
+        "node": 8
+      }
+		}]
+  ],
+  "plugins": [
+		"syntax-dynamic-import",
+		"transform-object-rest-spread"
+  ]
+}
