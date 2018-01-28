@@ -13,14 +13,13 @@ const run = (command, args) => {
   });
 };
 
-const create = async (template, name) => {
+const create = (template, name) => {
   const dest = tmpDir();
   const args = [CLI, 'create', template, dest, '--name']
     .concat(name || `test-${template}`)
     .concat('--no-install');
 
-  await run('node', args);
-  return dest;
+  return run('node', args).then(() => dest);
 };
 
 module.exports = {create};
