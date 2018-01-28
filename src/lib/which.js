@@ -1,4 +1,4 @@
-import {promisify} from 'util';
+import promisify from 'pify';
 import which from 'which';
 
 const pWhich = promisify(which);

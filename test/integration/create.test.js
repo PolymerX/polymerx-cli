@@ -1,6 +1,6 @@
 
-import {promisify} from 'util';
 import {resolve, relative} from 'path';
+import promisify from 'pify';
 
 import test from 'ava';
 import glob from 'glob';
