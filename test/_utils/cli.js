@@ -1,6 +1,6 @@
 const {resolve} = require('path');
 const uuid = require('uuid/v4');
-const crossSpawn = require('cross-spawn-promise');
+const crossSpawn = require('execa');
 
 const CLI = require.resolve('./../../dist/cli');
 
