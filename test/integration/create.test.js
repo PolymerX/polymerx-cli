@@ -8,6 +8,7 @@ import {create} from './../_utils/cli';
 import snapCreate from './../_utils/snapshots/create';
 
 const pGlob = promisify(glob);
+const isWin = process.platform === 'win32';
 
 const allFiles = (dir, opts) => {
   const ignores = x => !/node_modules|yarn.lock/i.test(x);
@@ -20,5 +21,5 @@ test('create a skeleton', async t => {
   const newPath = await create('polymer-skeleton');
   const files = await allFiles(newPath);
   const relativePaths = files.map(file => relative(newPath, file));
-  t.deepEqual(relativePaths, snapCreate);
+  t.deepEqual(relativePaths, snapCreate(isWin));
 });

@@ -1,4 +1,5 @@
-module.exports = [
+
+const files = [
   '.editorconfig',
   '.gitignore',
   '.npmrc',
@@ -42,3 +43,5 @@ module.exports = [
   'webpack-nomodule.config.js',
   'webpack.config.js'
 ];
+
+module.exports = isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files;

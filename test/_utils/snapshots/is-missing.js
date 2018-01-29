@@ -1,4 +1,4 @@
-module.exports = (toRemove = []) => [{
+const options = [{
   name: 'template',
   message: 'Remote template to clone (user/repo#tag)',
   type: 'input',
@@ -38,5 +38,6 @@ module.exports = (toRemove = []) => [{
   message: 'Install dependencies',
   type: 'confirm',
   default: true
-}
-].filter(option => !toRemove.includes(option.name));
+}];
+
+module.exports = (toRemove = []) => options.filter(option => !toRemove.includes(option.name));
