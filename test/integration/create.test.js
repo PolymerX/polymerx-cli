@@ -19,7 +19,6 @@ const allFiles = (dir, opts) => {
 
 test('create a skeleton', async t => {
   const newPath = await create('polymer-skeleton');
-  console.log('<<<<< Skeleton created >>>>>');
   const files = await allFiles(newPath);
   const relativePaths = files.map(file => relative(newPath, file));
   t.deepEqual(relativePaths, snapCreate(isWin));

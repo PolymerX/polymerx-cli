@@ -1,14 +1,13 @@
 const {resolve} = require('path');
 const uuid = require('uuid/v4');
-const crossSpawn = require('execa');
+const execa = require('execa');
 
 const CLI = require.resolve('./../../dist/cli');
 
 const tmpDir = () => resolve(__dirname, '../output', uuid());
 
 const run = (command, args) => {
-  console.log('<<<<< CrossSpawing >>>>>');
-  return crossSpawn(command, args.filter(Boolean), {cwd: resolve(__dirname)})
+  return execa(command, args.filter(Boolean), {cwd: resolve(__dirname)})
   .catch(err => {
     console.log(err.toString());
     throw err.toString();
