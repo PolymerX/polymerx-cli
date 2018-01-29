@@ -19,7 +19,7 @@ const ORG = 'PolymerX';
 
 const getAuthor = async () => {
   const {user} = await gitUser();
-  return `${user.name} <${user.email}>`;
+  return `${user ? user.name : ''} <${user ? user.email : ''}>`;
 };
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.substring(1);
