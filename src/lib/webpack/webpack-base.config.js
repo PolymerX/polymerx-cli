@@ -68,8 +68,7 @@ const shared = env => {
   /**
    * Plugin configuration
    */
-  const plugins = [isProd ?
-    new CopyWebpackPlugin(copyStatics.copyWebcomponents) :
+  const plugins = [].concat(isProd ? [
     new WorkboxPlugin({
       globDirectory: OUTPUT_PATH,
       globPatterns: ['**/!(*map*)'],
@@ -79,10 +78,8 @@ const shared = env => {
     new CopyWebpackPlugin(
       [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
     )
-  ].concat([
-    new webpack.DefinePlugin({
-      'process.env': processEnv
-    })
+  ] : [new CopyWebpackPlugin(copyStatics.copyWebcomponents)]).concat([
+    new webpack.DefinePlugin({'process.env': processEnv})
   ]);
 
   const entry = isProd ? [src] : [src].concat([
