@@ -70,6 +70,6 @@ export default asyncCommand({
     // }
 
     const stats = await runWebpack(newArgv, showStats);
-    // showStats(stats);
+    showStats(stats);
   }
 });

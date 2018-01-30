@@ -10,6 +10,22 @@ import isDir from './../is-dir';
 
 import webpackConfig from './webpack-base.config';
 
+const log = msg => process.stdout.write(msg);
+
+const endMessage = stats =>
+  stats.hasErrors() ?
+    log(chalk.red('\n\nBuild failed!\n\n')) :
+    log(chalk.green('\n\nCompiled successfully!\n\n'));
+
+const detailMessage = (port, userPort, serverAddr) => {
+  if (port !== userPort) {
+    log(`Port ${chalk.bold(userPort)} is in use, using ${chalk.bold(port)} instead\n\n`);
+  }
+
+  log('You can view the application in browser.\n\n');
+  log(`${chalk.bold('Local:')} ${serverAddr}\n`);
+};
+
 const devBuild = async (env, onprogress) => {
   const config = webpackConfig(env);
 
@@ -29,20 +45,9 @@ const devBuild = async (env, onprogress) => {
       // const localIpAddr = `${protocol}://${ip.address()}:${chalk.bold(port)}`;
 
       clear();
+      endMessage(stats);
+      detailMessage(port, userPort, serverAddr);
 
-      if (stats.hasErrors()) {
-        process.stdout.write(chalk.red('Build failed!\n\n'));
-      } else {
-        process.stdout.write(chalk.green('Compiled successfully!\n\n'));
-
-        if (userPort !== port) {
-          process.stdout
-            .write(`Port ${chalk.bold(userPort)} is in use, using ${chalk.bold(port)} instead\n\n`);
-        }
-        process.stdout.write('You can view the application in browser.\n\n');
-        process.stdout.write(`${chalk.bold('Local:')}            ${serverAddr}\n`);
-        // process.stdout.write(`${chalk.bold('On Your Network:')}  ${localIpAddr}\n`);
-      }
 
       if (onprogress) {
         onprogress(stats);

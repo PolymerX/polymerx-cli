@@ -13,7 +13,8 @@ const shared = env => {
     src,
     srcDir,
     nomodule,
-    pkg
+    pkg,
+    cwd
   } = env;
 
   const IS_MODULE_BUILD = !nomodule;
@@ -106,15 +107,25 @@ const shared = env => {
     },
     plugins,
     devServer: {
-      contentBase: OUTPUT_PATH,
+      hot: true,
       compress: true,
+      contentBase: OUTPUT_PATH,
       overlay: {
         errors: true
       },
-      hot: true,
-      port: 3000,
-      host: '0.0.0.0',
-      disableHostCheck: true
+      stats: 'minimal',
+      port: process.env.PORT || env.port || 3000,
+      host: process.env.HOST || env.host || '0.0.0.0',
+      disableHostCheck: true,
+      historyApiFallback: true,
+      quiet: true,
+      clientLogLevel: 'none',
+      watchOptions: {
+        ignored: [
+          resolve(cwd, 'dist'),
+          resolve(cwd, 'node_modules')
+        ]
+      }
     }
   };
 };
