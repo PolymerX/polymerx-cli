@@ -7,7 +7,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import moduleConf from './webpack-module.config';
 import nomoduleConf from './webpack-nomodule.config';
 
-const shared = env => {
+const shared = argv => {
   const {
     isProd,
     src,
@@ -15,11 +15,19 @@ const shared = env => {
     nomodule,
     pkg,
     cwd
-  } = env;
+  } = argv;
 
   const IS_MODULE_BUILD = !nomodule;
   const ENV = isProd ? 'production' : 'development';
   const OUTPUT_PATH = isProd ? resolve('dist') : resolve(src || 'src');
+
+  const HOST = process.env.HOST || argv.host;
+  const PORT = process.env.PORT || argv.port;
+  const FULL_HOST = `http://${HOST}:${PORT}`;
+  const ENTRY = isProd ? [OUTPUT_PATH] : [OUTPUT_PATH].concat([
+    `webpack-dev-server/client?${FULL_HOST}`,
+    'webpack/hot/dev-server'
+  ]);
 
   const processEnv = {
     NODE_ENV: JSON.stringify(ENV),
@@ -80,29 +88,38 @@ const shared = env => {
       [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
     )
   ] : [new CopyWebpackPlugin(copyStatics.copyWebcomponents)]).concat([
-    new webpack.DefinePlugin({'process.env': processEnv})
-  ]);
-
-  const entry = isProd ? [src] : [src].concat([
-    'webpack-dev-server/client',
-    'webpack/hot/dev-server'
+    new webpack.DefinePlugin({'process.env': processEnv}),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ]);
 
   return {
-    entry,
+    entry: ENTRY,
     devtool: isProd ? 'source-map' : 'cheap-module-source-map',
     output: {
       path: OUTPUT_PATH,
       filename: IS_MODULE_BUILD ? 'module.bundle.js' : 'bundle.js'
     },
+    resolve: {
+      modules: [
+        'node_modules',
+        resolve(__dirname, '../../../node_modules')
+      ]
+    },
+    resolveLoader: {
+      modules: [
+        resolve(__dirname, '../../../node_modules'),
+        resolve(cwd, 'node_modules')
+      ]
+    },
     module: {
       rules: [{
         test: /\.html$/,
-        use: ['text-loader']
+        use: ['raw-loader']
       },
       {
         test: /\.pcss$/,
-        use: ['text-loader', 'postcss-loader']
+        use: ['raw-loader', 'postcss-loader']
       }]
     },
     plugins,
@@ -114,8 +131,8 @@ const shared = env => {
         errors: true
       },
       stats: 'minimal',
-      port: process.env.PORT || env.port || 3000,
-      host: process.env.HOST || env.host || '0.0.0.0',
+      port: PORT,
+      host: HOST,
       disableHostCheck: true,
       historyApiFallback: true,
       quiet: true,
@@ -130,5 +147,5 @@ const shared = env => {
   };
 };
 
-export default (env = {}) =>
-  merge(env.nomodule ? nomoduleConf(env) : moduleConf(env), shared(env));
+export default (argv = {}) =>
+  merge(argv.nomodule ? nomoduleConf(argv) : moduleConf(argv), shared(argv));

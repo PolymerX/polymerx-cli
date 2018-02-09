@@ -1,4 +1,3 @@
-
 const BROWSERS = ['> 1%', 'last 2 versions', 'Firefox ESR', 'not ie <= 11'];
 
 export default () => {
@@ -13,13 +12,15 @@ export default () => {
             loader: 'babel-loader',
             options: {
               presets: [[
-                'env',
+                require.resolve('babel-preset-env'),
                 {
                   targets: {browsers: BROWSERS},
                   debug: true
                 }
               ]],
-              plugins: [['transform-object-rest-spread', {useBuiltIns: true}]]
+              plugins: [
+                [require.resolve('babel-plugin-transform-object-rest-spread'), {useBuiltIns: true}]
+              ]
             }
           }
         }

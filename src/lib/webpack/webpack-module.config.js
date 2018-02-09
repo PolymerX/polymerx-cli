@@ -8,19 +8,20 @@ export default ({isProd}) => {
       rules: [
         {
           test: /\.js$/,
-          // We need to transpile Polymer itself and other ES6 code
-          // exclude: /(node_modules)/,
+          exclude: /(node_modules)/,
           use: {
             loader: 'babel-loader',
             options: {
               presets: [[
-                'env',
+                require.resolve('babel-preset-env'),
                 {
                   targets: {browsers: ['last 2 Chrome versions', 'Safari 10']},
                   debug: true
                 }
               ]],
-              plugins: [['transform-object-rest-spread', {useBuiltIns: true}]]
+              plugins: [
+                [require.resolve('babel-plugin-transform-object-rest-spread'), {useBuiltIns: true}]
+              ]
             }
           }
         }

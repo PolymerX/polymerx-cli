@@ -1,18 +1,8 @@
-import {resolve} from 'path';
-import {readFile} from 'fs';
-
-import promisify from 'pify';
-// import getSslCert from '../lib/ssl-cert';
+// import getSslCert from '../lib/ssl-cert'; TODO
 import asyncCommand from '../lib/async-command';
-import showStats from './../lib/webpack/show-stats';
+import {showStats} from './../lib/webpack/log-stats';
 import runWebpack from './../lib/webpack/run-webpack';
-
-const pRead = promisify(readFile);
-
-const getPkg = async cwd => {
-  const pkgFile = resolve(cwd, 'package.json');
-  return pkgFile ? JSON.parse(await pRead(pkgFile, 'utf8')) : {};
-};
+import getPkg from './../lib/get-pkg';
 
 export default asyncCommand({
   command: 'watch [src]',
@@ -29,7 +19,7 @@ export default asyncCommand({
       default: 'src'
     },
     nomodule: {
-      description: 'Build ES5 bundle for old browsers',
+      description: 'Build ES5 bundle for oldie browsers',
       default: false
     },
     port: {
@@ -41,35 +31,30 @@ export default asyncCommand({
       description: 'Hostname to start a server on',
       default: '0.0.0.0',
       alias: 'H'
-    },
-    https: {
-      description: 'Use HTTPS?',
-      type: 'boolean',
-      default: false
-    },
-    template: {
-      description: 'HTML template used by webpack'
-    },
-    config: {
-      description: 'Path to custom polymerx.config.js',
-      alias: 'c'
     }
+    // TODO
+    // https: {
+    //   description: 'Use HTTPS?',
+    //   type: 'boolean',
+    //   default: false
+    // },
+    // TODO: using the HTML plugin for webpack we can provide a template
+    // template: {
+    //   description: 'HTML template used by webpack'
+    // },
+    // TODO: custom config
+    // config: {
+    //   description: 'Path to custom polymerx.config.js',
+    //   alias: 'c'
+    // }
   },
 
   async handler(argv) {
     const pkg = await getPkg(argv.cwd);
-    const newArgv = Object.assign({}, argv, {production: false, watch: true, pkg});
+    const newArgv = Object.assign({}, argv, {production: false, pkg});
 
-    // if (argv.https || process.env.HTTPS) {
-    //   let ssl = await getSslCert();
-    //   if (!ssl) {
-    //     ssl = true;
-    //     warn('Reverting to `webpack-dev-server` internal certificate.');
-    //   }
-    //   argv.https = ssl;
-    // }
-
-    const stats = await runWebpack(newArgv, showStats);
+    // TODO: show time for compilation
+    const stats = await runWebpack(newArgv);
     showStats(stats);
   }
 });
