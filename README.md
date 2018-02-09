@@ -63,6 +63,21 @@ $ polymerx create --help
 
 > NOTE: the required data will be asked if not specified.
 
+#### polymerx watch
+
+Easy development with `hot-module-replacement` and "friendly" error layers.
+
+```
+$ polymerx watch
+
+  --cwd         A directory to use instead of $PWD.              [string]   [default: .]
+  --src         Entry file (index.js)                            [string]   [default: "src"]
+  --port, -p    Port to start a server on                        [string]   [default: "8080"]
+  --host,       Hostname to start a server on                    [string]   [default: "0.0.0.0"]
+```
+
+> NOTE: You can run the dev server on a different port using `PORT=8091 polymerx watch`
+
 
 ## About this tool
 
