@@ -4,7 +4,7 @@
  [![codecov](https://codecov.io/gh/PolymerX/polymerx-cli/badge.svg?branch=master)](https://codecov.io/gh/PolymerX/polymerx-cli?branch=master)
 [![GitHub issues](https://img.shields.io/github/issues/PolymerX/polymerx-cli.svg?style=flat-square)](https://github.com/PolymerX/polymerx-cli/issues)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/sindresorhus/xo)
-[![Polymer Skeleton](https://img.shields.io/badge/polymerX-SKELETON-435877.svg?style=flat-square)](https://github.com/PolymerX/polymer-skeleton)
+[![PolymerX CLI](https://img.shields.io/badge/polymerX-CLI-blue.svg?style=flat-square)](https://github.com/PolymerX/polymerx-cli)
 
 # ⚠️ ️ THIS TOOL IS NOT READY YET. PLEASE WAIT  ⚠️
 
@@ -62,6 +62,21 @@ $ polymerx create --help
 ```
 
 > NOTE: the required data will be asked if not specified.
+
+#### polymerx watch
+
+Easy development with `hot-module-replacement` and "friendly" error layers.
+
+```
+$ polymerx watch
+
+  --cwd         A directory to use instead of $PWD.              [string]   [default: .]
+  --src         Entry file (index.js)                            [string]   [default: "src"]
+  --port, -p    Port to start a server on                        [string]   [default: "8080"]
+  --host,       Hostname to start a server on                    [string]   [default: "0.0.0.0"]
+```
+
+> NOTE: You can run the dev server on a different port using `PORT=8091 polymerx watch`
 
 
 ## About this tool

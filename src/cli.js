@@ -2,6 +2,7 @@
 
 import yargs from 'yargs';
 import create from './commands/create';
+import watch from './commands/watch';
 import logo from './lib/logo';
 
 const pkg = require('./../package.json');
@@ -13,6 +14,7 @@ const HELP = `
 /* eslint-disable no-unused-expressions */
 yargs
   .command(create)
+  .command(watch)
   .usage(logo(HELP))
   .help()
   .alias('h', 'help')
