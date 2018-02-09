@@ -4,7 +4,7 @@
  [![codecov](https://codecov.io/gh/PolymerX/polymerx-cli/badge.svg?branch=master)](https://codecov.io/gh/PolymerX/polymerx-cli?branch=master)
 [![GitHub issues](https://img.shields.io/github/issues/PolymerX/polymerx-cli.svg?style=flat-square)](https://github.com/PolymerX/polymerx-cli/issues)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/sindresorhus/xo)
-[![Polymer Skeleton](https://img.shields.io/badge/polymerX-SKELETON-435877.svg?style=flat-square)](https://github.com/PolymerX/polymer-skeleton)
+[![PolymerX CLI](https://img.shields.io/badge/polymerX-CLI-blue.svg?style=flat-square)](https://github.com/PolymerX/polymerx-cli)
 
 # ⚠️ ️ THIS TOOL IS NOT READY YET. PLEASE WAIT  ⚠️
 
