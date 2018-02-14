@@ -19,7 +19,7 @@ const create = (template, name, install) => {
   const dest = tmpDir();
   const args = [CLI, 'create', template, dest, '--name']
     .concat(name || `test-${template}`)
-    .concat(install ? ['--install', isWin ? '--npm' : '--yarn'] : '--no-install');
+    .concat(install ? ['--install', isWin ? '' : '--yarn'] : '--no-install');
 
   console.log(
     'Creating skeleton project for testing...',
