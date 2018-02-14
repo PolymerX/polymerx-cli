@@ -63,7 +63,7 @@ $ polymerx create --help
 
 > NOTE: the required data will be asked if not specified.
 
-#### polymerx watch
+### polymerx watch
 
 Easy development with `hot-module-replacement` and "friendly" error layers.
 
