@@ -17,10 +17,11 @@ const startChrome = () => {
 
 const loadPage = (browser, url) => {
   return browser.newPage()
-    .then(page => {
-      page.goto(url);
-      return page;
-    });
+    .then(page =>
+      new Promise(resolve =>
+        page.goto(url).then(() => resolve(page))
+      )
+    );
 };
 
 const getContent = page => page.content();
