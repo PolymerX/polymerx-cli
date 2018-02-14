@@ -9,12 +9,18 @@ import {startChrome, loadPage, getContent} from './../_utils/chrome';
 const pRead = promisify(readFile);
 const pWrite = promisify(writeFile);
 const wait = time => new Promise(resolve => setTimeout(() => resolve(), time));
+const isWin = process.platform === 'win32';
 
 let chrome;
 
-test.after.always(() => chrome.close());
+test.after.always(() => isWin ? null : chrome.close());
 
 test('should create development server with hot reloading.', async t => {
+  if (isWin) {
+    t.pass('Not testing watch on Windows for now.');
+    return;
+  }
+
   const app = await create('polymer-skeleton', undefined, true);
   const templateAppFile = resolve(app, './src/components/containers/sk-app/template.html');
   const indexAppFile = resolve(app, './src/index.html');
