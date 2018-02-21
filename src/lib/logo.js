@@ -9,7 +9,7 @@ const LOGO = `
 
 const COLOR_CODE = 95;
 const color = (color, text) =>
-  `\u001b[${color}m\u001b[2m${text}\u001b[22m\u001b[39m`;
+  `\u001b[${color}m\u001b[2m${text}\u001b[22m\u001b[39m`; // eslint-disable-line unicorn/escape-case
 
 const textify = (logoASCII, text, useColor) => {
   const logo = logoASCII.split('\n');
@@ -67,7 +67,7 @@ const textify = (logoASCII, text, useColor) => {
     for (let index = 3; index <= height; index++) {
       logo[index] = color(
         COLOR_CODE, logo[index].substring(0, start)) + color(0, logo[index].substring(start)
-      );
+        );
     }
   }
 

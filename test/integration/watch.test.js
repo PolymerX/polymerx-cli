@@ -39,9 +39,9 @@ test('should create development server with hot reloading.', async t => {
     .replace('<h1 class="Title">Web Components — Now.</h1>', '<h1 class="Title">Test App</h1>');
   const newIndexSource = indexAppSource
     .replace(
-    '<script src="./vendor/webcomponents-loader.js" async></script>',
-    '<script src="./vendor/webcomponents-lite.js" async shadydom></script>'
-  );
+      '<script src="./vendor/webcomponents-loader.js" async></script>',
+      '<script src="./vendor/webcomponents-lite.js" async shadydom></script>'
+    );
   await pWrite(templateAppFile, newTemplateSource);
   await pWrite(indexAppFile, newIndexSource);
 

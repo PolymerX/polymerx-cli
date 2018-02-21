@@ -8,10 +8,10 @@ const tmpDir = () => resolve(__dirname, '../output', uuid());
 
 const run = (command, args, cwd) => {
   return execa(command, args.filter(Boolean), {cwd: cwd || resolve(__dirname)})
-  .catch(err => {
-    console.log(err.toString());
-    throw err.toString();
-  });
+    .catch(err => {
+      console.log(err.toString());
+      throw err.toString();
+    });
 };
 
 const create = (template, name, install) => {

@@ -36,7 +36,7 @@ const completeData = async (argv, spinner) => {
 const checkExistOrForce = async (exists, isForceEnabled, spinner) => {
   if (exists && !isForceEnabled) {
     error(
-`Refusing to overwrite current directory!
+      `Refusing to overwrite current directory!
 Please specify a different destination or use the \`--force\` flag`, spinner
     );
     return process.exit(1);
