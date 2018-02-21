@@ -19,7 +19,7 @@ const devBuild = async argv => {
 
   return new Promise((resolve, reject) => {
     compiler.plugin('done', stats => {
-      const devServer = config.devServer;
+      const {devServer} = config;
       const protocol = (process.env.HTTPS || devServer.https) ? 'https' : 'http';
       const userHost = process.env.HOST || devServer.host || 'localhost';
       const host = userHost === '0.0.0.0' ? 'localhost' : userHost;

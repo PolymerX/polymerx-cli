@@ -7,8 +7,7 @@ const startChrome = () => {
     '--disable-gpu',
     '--enable-logging',
     '--no-sandbox'
-  ]})
-  .then(browser => {
+  ]}).then(browser => {
     const endpoint = browser.wsEndpoint();
     console.log(endpoint);
     return browser;
