@@ -43,11 +43,11 @@ const devBuild = async argv => {
   });
 };
 
-const prodBuild = () => {
+const prodBuild = argv => {
   console.log('Nothing here');
 };
 
-export default (argv, onprogress) => {
+export default argv => {
   const cwd = resolve(argv.cwd || process.cwd());
 
   // src provided could be a file or a dir, so switch it up
@@ -63,5 +63,5 @@ export default (argv, onprogress) => {
   });
 
   const fn = argv.production ? prodBuild : devBuild;
-  return fn(newArgv, onprogress);
+  return fn(newArgv);
 };
