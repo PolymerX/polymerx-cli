@@ -2,7 +2,7 @@
 import {resolve} from 'path';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
-export default ({isProd}) => {
+export default ({isProd, dest}) => {
   return {
     module: {
       rules: [
@@ -28,7 +28,7 @@ export default ({isProd}) => {
       ]
     },
     plugins: isProd ? [
-      new CleanWebpackPlugin([resolve('dist')], {verbose: true})
+      new CleanWebpackPlugin([resolve(dest || 'dist')], {allowExternal: true, verbose: true})
     ] : []
   };
 };

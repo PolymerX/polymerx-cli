@@ -3,6 +3,7 @@
 import yargs from 'yargs';
 import create from './commands/create';
 import watch from './commands/watch';
+import build from './commands/build';
 import logo from './lib/logo';
 
 const pkg = require('./../package.json');
@@ -15,6 +16,7 @@ const HELP = `
 yargs
   .command(create)
   .command(watch)
+  .command(build)
   .usage(logo(HELP))
   .help()
   .alias('h', 'help')

@@ -12,6 +12,7 @@ const shared = argv => {
     isProd,
     src,
     srcDir,
+    dest,
     nomodule,
     pkg,
     cwd
@@ -19,12 +20,12 @@ const shared = argv => {
 
   const IS_MODULE_BUILD = !nomodule;
   const ENV = isProd ? 'production' : 'development';
-  const OUTPUT_PATH = isProd ? resolve('dist') : resolve(src || 'src');
+  const OUTPUT_PATH = isProd ? resolve(dest || 'dist') : resolve(src || 'src');
 
   const HOST = process.env.HOST || argv.host;
   const PORT = process.env.PORT || argv.port;
   const FULL_HOST = `http://${HOST}:${PORT}`;
-  const ENTRY = isProd ? [OUTPUT_PATH] : [OUTPUT_PATH].concat([
+  const ENTRY = isProd ? [resolve(src || 'src')] : [OUTPUT_PATH].concat([
     `webpack-dev-server/client?${FULL_HOST}`,
     'webpack/hot/dev-server'
   ]);

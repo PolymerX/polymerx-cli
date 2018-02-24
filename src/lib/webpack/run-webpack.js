@@ -11,6 +11,25 @@ import {endMessage, detailMessage, showStats} from './log-stats';
 
 import webpackConfig from './webpack-base.config';
 
+const runProdCompiler = (compiler, type) => {
+  return new Promise((resolve, reject) =>
+    compiler.run(async (err, stats) => {
+      // On stats error/warnings
+      showStats(stats);
+
+      // On compiler error
+      if (err || (stats && stats.hasErrors())) {
+        reject(chalk.red(`${type} build failed! ${err}`));
+      }
+
+      // Timeout for plugins that work on `after-emit` event of webpack
+      // On done with success
+      await new Promise(resolve => setTimeout(resolve, 20));
+      resolve(stats);
+    })
+  );
+};
+
 const devBuild = async argv => {
   const config = webpackConfig(argv);
   const userPort = Number(process.env.PORT || config.devServer.port) || 8080;
@@ -43,11 +62,18 @@ const devBuild = async argv => {
   });
 };
 
-const prodBuild = () => {
-  console.log('Nothing here');
+const prodBuild = async argv => {
+  const configModule = webpackConfig(argv);
+  const configNoModule = webpackConfig(Object.assign({}, argv, {nomodule: true}));
+  const compilerModule = webpack(configModule);
+  const compilerNoModule = webpack(configNoModule);
+
+  const resModule = await runProdCompiler(compilerModule, 'Module');
+  const resNomodule = await runProdCompiler(compilerNoModule, 'NoModule');
+  return {resModule, resNomodule};
 };
 
-export default (argv, onprogress) => {
+export default argv => {
   const cwd = resolve(argv.cwd || process.cwd());
 
   // src provided could be a file or a dir, so switch it up
@@ -63,5 +89,5 @@ export default (argv, onprogress) => {
   });
 
   const fn = argv.production ? prodBuild : devBuild;
-  return fn(newArgv, onprogress);
+  return fn(newArgv);
 };
