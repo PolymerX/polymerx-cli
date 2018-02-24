@@ -35,4 +35,9 @@ const watch = (appDir, host, port) => {
   return run('node', args, appDir).stdout;
 };
 
-module.exports = {create, watch};
+const build = appDir => {
+  const args = [CLI, 'build'];
+  return run('node', args, appDir);
+};
+
+module.exports = {create, watch, build};
