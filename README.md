@@ -68,7 +68,7 @@ $ polymerx create --help
 Easy development with `hot-module-replacement` and "friendly" error layers.
 
 ```
-$ polymerx watch
+$ polymerx watch --help
 
   --cwd         A directory to use instead of $PWD.              [string]   [default: .]
   --src         Entry file (index.js)                            [string]   [default: "src"]
@@ -77,6 +77,20 @@ $ polymerx watch
 ```
 
 > NOTE: You can run the dev server on a different port using `PORT=8091 polymerx watch`
+
+### polymerx build
+
+Create a production build with `module` build, `no-module` build and Service Workers.
+
+```
+$ polymerx build --help
+
+  --cwd             A directory to use instead of $PWD.          [string]   [default: .]
+  --src             Entry file (index.js).                       [string]   [default: "src"]
+  --dest            Directory root for output.                   [string]   [default: "dist"]
+  --workers, -w     Add a service worker to application.         [boolean]  [default: true]
+  --clean           Clear output directory before building.      [boolean]  [default: true]
+```
 
 
 ## About this tool
