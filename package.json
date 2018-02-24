@@ -28,7 +28,7 @@
     "prepublish": "yarn build",
     "release": "git pull && standard-version",
     "pretest": "yarn build && rimraf test/output",
-    "test": "xo && nyc ava",
+    "test": "xo && nyc ava --serial",
     "posttest": "rimraf test/output",
     "pretest:travis": "yarn pretest",
     "test:travis": "yarn test && nyc report --reporter=text-lcov > coverage.lcov && codecov"
