@@ -1,14 +1,20 @@
 import {resolve} from 'path';
 import rimraf from 'rimraf';
+import ora from 'ora';
 import promisify from 'pify';
-import chalk from 'chalk';
 import isDir from './../lib/is-dir';
 import getPkg from './../lib/get-pkg';
+import error from './../lib/error';
 import {showStats} from './../lib/webpack/log-stats';
 import runWebpack from './../lib/webpack/run-webpack';
 import asyncCommand from './../lib/async-command';
 
 const pRimRaf = promisify(rimraf);
+
+const end = (stats, type, spinner) =>
+  stats.hasErrors() ?
+    spinner.fail(`Build failed! [type: ${type}]`) :
+    spinner.succeed(`Compiled successfully! [type: ${type}] `);
 
 export default asyncCommand({
   command: 'build [src] [dest]',
@@ -40,7 +46,7 @@ export default asyncCommand({
     json: {
       description: 'Generate build statistics for analysis.',
       default: false
-    },
+    }
     // TODO
     // template: {
     //   description: 'HTML template used by webpack'
@@ -52,11 +58,16 @@ export default asyncCommand({
   },
 
   async handler(argv) {
+    const spinner = ora({
+      text: 'Preparing build things...',
+      color: 'magenta'
+    }).start();
+
     const cwd = resolve(argv.cwd);
     const modules = resolve(cwd, 'node_modules');
 
     if (!isDir(modules)) {
-      chalk.red('No `node_modules` found! Please run `npm install` before continuing.');
+      error('No `node_modules` found! Please run `npm install` before continuing.', spinner);
       return process.exit(1); // eslint-disable-line unicorn/no-process-exit
     }
 
@@ -68,8 +79,16 @@ export default asyncCommand({
     const pkg = await getPkg(argv.cwd);
     const newArgv = Object.assign({}, argv, {production: true, pkg});
 
-    const stats = await runWebpack(newArgv);
-    showStats(stats);
+    spinner.color = 'red';
+    spinner.text = 'Running compiler...';
+    const {resModule, resNomodule} = await runWebpack(newArgv);
+
+    end(resModule, 'Module', spinner);
+    end(resNomodule, 'NoModule', spinner);
+
+    // Be sure to show errors/warnings if present
+    showStats(resModule);
+    showStats(resNomodule);
 
     // if (argv.json) {
     //   await writeJsonStats(stats);
