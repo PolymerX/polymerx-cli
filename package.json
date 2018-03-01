@@ -46,7 +46,9 @@
     "webpack3-polymer",
     "polymer-webpack",
     "polymer-postcss",
-    "polymer-service-workers"
+    "polymer-service-workers",
+    "workbox",
+    "polymer-workbox"
   ],
   "dependencies": {
     "babel-loader": "7.1.2",
