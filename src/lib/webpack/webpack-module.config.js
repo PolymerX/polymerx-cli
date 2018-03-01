@@ -16,7 +16,7 @@ export default ({isProd, dest}) => {
                 require.resolve('babel-preset-env'),
                 {
                   targets: {browsers: ['last 2 Chrome versions', 'Safari 10']},
-                  debug: true
+                  debug: !isProd
                 }
               ]],
               plugins: [
@@ -28,7 +28,7 @@ export default ({isProd, dest}) => {
       ]
     },
     plugins: isProd ? [
-      new CleanWebpackPlugin([resolve(dest || 'dist')], {allowExternal: true, verbose: true})
+      new CleanWebpackPlugin([resolve(dest || 'dist')], {allowExternal: true, verbose: false})
     ] : []
   };
 };

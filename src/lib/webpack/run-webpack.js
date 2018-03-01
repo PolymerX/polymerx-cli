@@ -68,8 +68,8 @@ const prodBuild = async argv => {
   const compilerModule = webpack(configModule);
   const compilerNoModule = webpack(configNoModule);
 
-  const resModule = await runProdCompiler(compilerModule, 'Module');
-  const resNomodule = await runProdCompiler(compilerNoModule, 'NoModule');
+  const resModule = await runProdCompiler(compilerModule, 'module');
+  const resNomodule = await runProdCompiler(compilerNoModule, 'no-module');
   return {resModule, resNomodule};
 };
 

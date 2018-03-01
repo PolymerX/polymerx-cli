@@ -1,6 +1,6 @@
 const BROWSERS = ['> 1%', 'last 2 versions', 'Firefox ESR', 'not ie <= 11'];
 
-export default () => {
+export default ({isProd}) => {
   return {
     module: {
       rules: [
@@ -15,7 +15,7 @@ export default () => {
                 require.resolve('babel-preset-env'),
                 {
                   targets: {browsers: BROWSERS},
-                  debug: true
+                  debug: !isProd
                 }
               ]],
               plugins: [

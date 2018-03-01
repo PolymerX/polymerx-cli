@@ -79,7 +79,7 @@ export default asyncCommand({
     const pkg = await getPkg(argv.cwd);
     const newArgv = Object.assign({}, argv, {production: true, pkg});
 
-    spinner.color = 'red';
+    spinner.color = 'yellow';
     spinner.text = 'Running compiler...';
     const {resModule, resNomodule} = await runWebpack(newArgv);
 
