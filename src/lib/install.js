@@ -2,5 +2,6 @@ import execa from 'execa';
 
 export default (cwd, isYarn) => {
   const cmd = isYarn ? 'yarn' : 'npm';
-  return execa(cmd, ['install'], {cwd, stdio: 'ignore'});
+  const endCmd = process.platform === 'win32' ? `${cmd}.cmd` : cmd;
+  return execa(endCmd, ['install'], {cwd, stdio: 'ignore'});
 };
