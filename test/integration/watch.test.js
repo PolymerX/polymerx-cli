@@ -16,11 +16,6 @@ let chrome;
 test.after.always(() => isWin ? null : chrome.close());
 
 test('should create development server with hot reloading.', async t => {
-  if (isWin) {
-    t.pass('Not testing watch on Windows for now.');
-    return;
-  }
-
   const app = await create('polymer-skeleton', undefined, true);
   const templateAppFile = resolve(app, './src/components/containers/sk-app/template.html');
   const indexAppFile = resolve(app, './src/index.html');

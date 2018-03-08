@@ -9,11 +9,6 @@ import snapBuild from './../_utils/snapshots/build';
 const isWin = process.platform === 'win32';
 
 test('build a skeleton', async t => {
-  if (isWin) {
-    t.pass('Not testing watch on Windows for now.');
-    return;
-  }
-
   const newPath = await create('polymer-skeleton', undefined, true);
   await build(newPath);
   const files = await getFiles(join(newPath, 'dist'));
