@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/PolymerX/polymerx-cli/compare/v0.0.2...v0.0.3) (2018-03-11)
+
+
+### Bug Fixes
+
+* **windows-install:** added ext for fixing windows installation ([c5bb1fc](https://github.com/PolymerX/polymerx-cli/commit/c5bb1fc))
+
+
+
 <a name="0.0.2"></a>
 ## [0.0.2](https://github.com/PolymerX/polymerx-cli/compare/v0.0.1...v0.0.2) (2018-03-01)
 
