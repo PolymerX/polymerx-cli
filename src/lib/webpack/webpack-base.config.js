@@ -15,7 +15,8 @@ const shared = argv => {
     dest,
     nomodule,
     pkg,
-    cwd
+    cwd,
+    https
   } = argv;
 
   const IS_MODULE_BUILD = !nomodule;
@@ -134,6 +135,7 @@ const shared = argv => {
       stats: 'minimal',
       port: PORT,
       host: HOST,
+      https,
       disableHostCheck: true,
       historyApiFallback: true,
       quiet: true,
