@@ -14,6 +14,7 @@ import error from './../lib/error';
 import isDir from './../lib/is-dir';
 import extractTar from './../lib/extract-tar';
 import install from './../lib/install';
+import getPkg from './../lib/get-pkg';
 
 const ORG = 'PolymerX';
 
@@ -163,7 +164,6 @@ export default asyncCommand({
     spinner.start();
 
     // Extract files from `archive` to `target`
-    // TODO: read & respond to meta/hooks
     const keeps = await extractTar(archive, target);
     const isRepoEmpty = keeps.length <= 0;
     if (isRepoEmpty) {
@@ -175,15 +175,10 @@ export default asyncCommand({
     spinner.text = '⚙️  Making changes to files...';
     await replaceOwner(keeps, packageName, author);
 
-    // TODO: Validate user's `package.json` file
-    // const pkgFile = resolve(target, 'package.json');
-    // if (pkgFile) {
-    //   pkgData = JSON.parse(await fs.readFile(pkgFile));
-    //   // Write default "scripts" if none found
-    //   pkgData.scripts = pkgData.scripts || (await addScripts(pkgData, target, isYarn));
-    // } else {
-    //   warn('Could not locate `package.json` file!');
-    // }
+    const pkg = await getPkg(target);
+    if (!pkg) {
+      spinner.warn('⚠️ Could not locate `package.json` file!');
+    }
 
     const isYarn = argv.yarn &&
       await which('yarn')
@@ -199,12 +194,6 @@ export default asyncCommand({
     }
 
     spinner.succeed('Everything cloned and installed correctly!\n');
-
-    // TODO: init
-    // if (argv.git) {
-    //   await initGit(target);
-    // }
-
     getStarted(destFolder, isYarn);
   }
 });

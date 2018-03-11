@@ -7,5 +7,5 @@ const pRead = promisify(readFile);
 
 export default async cwd => {
   const pkgFile = resolve(cwd, 'package.json');
-  return pkgFile ? JSON.parse(await pRead(pkgFile, 'utf8')) : {};
+  return pkgFile ? JSON.parse(await pRead(pkgFile, 'utf8')) : undefined;
 };
