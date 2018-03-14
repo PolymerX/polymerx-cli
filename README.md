@@ -16,6 +16,7 @@
 * Build using Webpack under the hood producing Service Worker with WorkboxJs.
 * Develop with ease with `hot-reload` and error layer enabled.
 * Support for PostCSS (with personal configuration) when getting CSS from external files.
+* `https` certificate generation on the fly for development.
 * **No magic, just using the tools.**
 
 More to come...
@@ -62,6 +63,7 @@ $ polymerx create --help
   --force     Force option to create the directory for the new app               [default: false]
   --yarn      Use 'yarn' instead of 'npm'                              [boolean] [default: false]
   --git       Initialize version control using git                     [boolean] [default: false]
+  --https     Use HTTPS?                                               [boolean] [default: false]
   --install   Install dependencies                                     [boolean] [default: true]
 ```
 

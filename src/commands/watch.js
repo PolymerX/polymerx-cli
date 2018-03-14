@@ -1,8 +1,9 @@
-// import getSslCert from '../lib/ssl-cert'; TODO
+import chalk from 'chalk';
 import asyncCommand from '../lib/async-command';
 import {showStats} from './../lib/webpack/log-stats';
 import runWebpack from './../lib/webpack/run-webpack';
 import getPkg from './../lib/get-pkg';
+import getSSLCert from './../lib/ssl-cert';
 
 export default asyncCommand({
   command: 'watch [src]',
@@ -31,13 +32,12 @@ export default asyncCommand({
       description: 'Hostname to start a server on',
       default: '0.0.0.0',
       alias: 'H'
+    },
+    https: {
+      description: 'Use HTTPS?',
+      type: 'boolean',
+      default: false
     }
-    // TODO
-    // https: {
-    //   description: 'Use HTTPS?',
-    //   type: 'boolean',
-    //   default: false
-    // },
     // TODO: using the HTML plugin for webpack we can provide a template
     // template: {
     //   description: 'HTML template used by webpack'
@@ -51,6 +51,15 @@ export default asyncCommand({
 
   async handler(argv) {
     const pkg = await getPkg(argv.cwd);
+    if (argv.https || process.env.HTTPS) {
+      const ssl = await getSSLCert() || true;
+      argv.https = ssl;
+    }
+
+    if (argv.https === true) {
+      console.log(chalk.yellow('Reverting to `webpack-dev-server` internal certificate.'));
+    }
+
     const newArgv = Object.assign({}, argv, {production: false, pkg});
 
     // TODO: show time for compilation
