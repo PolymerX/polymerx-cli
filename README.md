@@ -16,6 +16,7 @@
 * Build using Webpack under the hood producing Service Worker with WorkboxJs.
 * Develop with ease with `hot-reload` and error layer enabled.
 * Support for PostCSS (with personal configuration) when getting CSS from external files.
+* `https` certificate generation on the fly for development.
 * **No magic, just using the tools.**
 
 More to come...
