@@ -1,6 +1,5 @@
 import chalk from 'chalk';
 import asyncCommand from '../lib/async-command';
-import {showStats} from './../lib/webpack/log-stats';
 import runWebpack from './../lib/webpack/run-webpack';
 import getPkg from './../lib/get-pkg';
 import getSSLCert from './../lib/ssl-cert';
@@ -63,7 +62,6 @@ export default asyncCommand({
     const newArgv = Object.assign({}, argv, {production: false, pkg});
 
     // TODO: show time for compilation
-    const stats = await runWebpack(newArgv);
-    showStats(stats);
+    await runWebpack(newArgv);
   }
 });

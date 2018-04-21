@@ -1,6 +1,10 @@
 import chalk from 'chalk';
+import Table from 'cli-table';
+import {formatSize} from 'webpack/lib/SizeFormatHelpers';
 
 const log = msg => process.stdout.write(msg);
+const beautySize = (size, isOverSizeLimit) => isOverSizeLimit ?
+  chalk.red(formatSize(size)) : chalk.green(formatSize(size));
 
 const stripLoaderPrefix = str =>
   typeof str === 'string' ?
@@ -27,10 +31,32 @@ export function showStats(stats) {
   return stats;
 }
 
-export function endMessage(stats) {
+export function endMessage(statsAssets, error) {
+  if (error) {
+    return log(chalk.red('\n\nBuild failed!\n\n'));
+  }
+
+  const assets = statsAssets
+    .sort((a, b) => b.size - a.size)
+    .reduce((acc, {name, size, isOverSizeLimit}) =>
+      acc.concat([[name, beautySize(size, isOverSizeLimit)]]),
+    []);
+
+  const table = new Table({
+    style: {head: ['blue']},
+    head: ['Asset', 'Size']
+  });
+  table.push(...assets);
+
+  log('\n');
+  log(chalk.green('Compiled successfully!\n\n'));
+  log(table.toString() + '\n\n');
+}
+
+export function endBuildMessage(stats, type, spinner) {
   return stats.hasErrors() ?
-    log(chalk.red('\n\nBuild failed!\n\n')) :
-    log(chalk.green('\n\nCompiled successfully!\n\n'));
+    spinner.fail(`Build failed! [type: ${type}]`) :
+    spinner.succeed(`Compiled! [type: ${type}] `);
 }
 
 export function detailMessage(err, {port, userPort, serverAddr, nomodule}) {

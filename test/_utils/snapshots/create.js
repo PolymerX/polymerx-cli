@@ -13,6 +13,7 @@ const files = [
   'postcss.config.js',
   'README.md',
   'scripts/link-bower.js',
+  'scripts/postinstall.js',
   'src/assets/AnimatedSkeleton.svg',
   'src/assets/icons/apple-touch-icon.png',
   'src/assets/icons/browserconfig.xml',

@@ -5,16 +5,21 @@ import promisify from 'pify';
 import isDir from './../lib/is-dir';
 import getPkg from './../lib/get-pkg';
 import error from './../lib/error';
-import {showStats} from './../lib/webpack/log-stats';
+import {showStats, endMessage, endBuildMessage} from './../lib/webpack/log-stats';
 import runWebpack from './../lib/webpack/run-webpack';
 import asyncCommand from './../lib/async-command';
 
 const pRimRaf = promisify(rimraf);
 
-const end = (stats, type, spinner) =>
-  stats.hasErrors() ?
-    spinner.fail(`Build failed! [type: ${type}]`) :
-    spinner.succeed(`Compiled successfully! [type: ${type}] `);
+const mergeAssets = (moduleStats, nomoduleStats) => {
+  const moduleAssets = moduleStats.toJson().assets;
+  const nomoduleAssets = nomoduleStats.toJson().assets;
+
+  return moduleAssets
+    .concat(nomoduleAssets
+      .filter(nomodule => !moduleAssets.find(module => nomodule.name === module.name))
+    );
+};
 
 export default asyncCommand({
   command: 'build [src] [dest]',
@@ -83,12 +88,14 @@ export default asyncCommand({
     spinner.text = 'Running compiler...';
     const {resModule, resNomodule} = await runWebpack(newArgv);
 
-    end(resModule, 'Module', spinner);
-    end(resNomodule, 'NoModule', spinner);
+    endBuildMessage(resModule, 'Module', spinner);
+    endBuildMessage(resNomodule, 'NoModule', spinner);
 
     // Be sure to show errors/warnings if present
     showStats(resModule);
     showStats(resNomodule);
+
+    endMessage(mergeAssets(resModule, resNomodule));
 
     // if (argv.json) {
     //   await writeJsonStats(stats);

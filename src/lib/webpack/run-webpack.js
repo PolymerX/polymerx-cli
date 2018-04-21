@@ -47,12 +47,13 @@ const devBuild = async argv => {
       // const localIpAddr = `${protocol}://${ip.address()}:${chalk.bold(port)}`;
 
       clear();
-      endMessage(stats);
+      endMessage(stats.toJson().assets, stats.hasErrors());
       detailMessage(stats.hasErrors(), {
         port,
         userPort,
         serverAddr,
-        nomodule: argv.nomodule
+        nomodule: argv.nomodule,
+        assets: stats.toJson({assets: true}).assets
       });
       showStats(stats);
     });
