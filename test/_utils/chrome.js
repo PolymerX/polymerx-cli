@@ -18,11 +18,17 @@ const loadPage = (browser, url) => {
   return browser.newPage()
     .then(page =>
       new Promise(resolve =>
-        page.goto(url).then(() => resolve(page))
+        page.goto(url, {
+          waitUntil: 'networkidle0'
+        }).then(() => resolve(page))
       )
     );
 };
 
-const getContent = page => page.content();
+const getWelcomeText = page => page.evaluate(() => {
+  const el = document.querySelector('sk-app'); // eslint-disable-line no-undef
+  const welcome = el.shadowRoot.querySelector('.Welcome');
+  return Promise.resolve(welcome.textContent);
+});
 
-module.exports = {startChrome, loadPage, getContent};
+module.exports = {startChrome, loadPage, getWelcomeText};
