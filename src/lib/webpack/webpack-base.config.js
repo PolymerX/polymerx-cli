@@ -1,7 +1,7 @@
 import {resolve, join} from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
-import WorkboxPlugin from 'workbox-webpack-plugin';
+import {GenerateSW} from 'workbox-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import moduleConf from './webpack-module.config';
@@ -80,10 +80,9 @@ const shared = argv => {
    * Plugin configuration
    */
   const plugins = [].concat(isProd ? [
-    new WorkboxPlugin({
+    new GenerateSW({
       globDirectory: OUTPUT_PATH,
       globPatterns: ['**/!(*map*)'],
-      globIgnores: ['**/sw.js'],
       swDest: join(OUTPUT_PATH, 'sw.js')
     }),
     new CopyWebpackPlugin(
@@ -96,8 +95,8 @@ const shared = argv => {
   ]);
 
   return {
+    mode: ENV,
     entry: ENTRY,
-    devtool: isProd ? 'source-map' : 'cheap-module-source-map',
     output: {
       path: OUTPUT_PATH,
       filename: IS_MODULE_BUILD ? 'module.bundle.js' : 'bundle.js'

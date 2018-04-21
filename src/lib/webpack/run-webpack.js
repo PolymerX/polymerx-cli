@@ -19,7 +19,7 @@ const runProdCompiler = (compiler, type) => {
 
       // On compiler error
       if (err || (stats && stats.hasErrors())) {
-        reject(chalk.red(`${type} build failed! ${err}`));
+        reject(chalk.red(`⚠️ ${type} build failed! ${err || ''}`));
       }
 
       // Timeout for plugins that work on `after-emit` event of webpack

@@ -86,16 +86,21 @@ export default asyncCommand({
 
     spinner.color = 'yellow';
     spinner.text = 'Running compiler...';
-    const {resModule, resNomodule} = await runWebpack(newArgv);
 
-    endBuildMessage(resModule, 'Module', spinner);
-    endBuildMessage(resNomodule, 'NoModule', spinner);
+    try {
+      const {resModule, resNomodule} = await runWebpack(newArgv);
 
-    // Be sure to show errors/warnings if present
-    showStats(resModule);
-    showStats(resNomodule);
+      endBuildMessage(resModule, 'Module', spinner);
+      endBuildMessage(resNomodule, 'NoModule', spinner);
 
-    endMessage(mergeAssets(resModule, resNomodule));
+      // Be sure to show errors/warnings if present
+      showStats(resModule);
+      showStats(resNomodule);
+
+      endMessage(mergeAssets(resModule, resNomodule));
+    } catch (err) {
+      console.error('\n' + err);
+    }
 
     // if (argv.json) {
     //   await writeJsonStats(stats);
