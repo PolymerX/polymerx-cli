@@ -21,9 +21,7 @@ const files = [
   'dist/vendor/webcomponents-hi-sd-ce.js',
   'dist/vendor/webcomponents-lite.js',
   'dist/vendor/webcomponents-loader.js',
-  'dist/vendor/webcomponents-sd-ce.js',
-  'dist/workbox-sw.prod.v2.1.2.js',
-  'dist/workbox-sw.prod.v2.1.2.js.map'
+  'dist/vendor/webcomponents-sd-ce.js'
 ];
 
 module.exports = isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files;

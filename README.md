@@ -13,7 +13,7 @@
 ## Features
 
 * Generate a Polymer Skeleton for your next project in 30 seconds.
-* Build using Webpack under the hood producing Service Worker with WorkboxJs.
+* Build using **Webpack 4** under the hood producing Service Worker with WorkboxJs.
 * Develop with ease with `hot-reload` and error layer enabled.
 * Support for PostCSS (with personal configuration) when getting CSS from external files.
 * `https` certificate generation on the fly for development.
