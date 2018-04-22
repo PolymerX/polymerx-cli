@@ -38,6 +38,7 @@ export function endMessage(statsAssets, error) {
 
   const assets = statsAssets
     .sort((a, b) => b.size - a.size)
+    .filter(item => !item.name.includes('hot-update'))
     .reduce((acc, {name, size, isOverSizeLimit}) =>
       acc.concat([[name, beautySize(size, isOverSizeLimit)]]),
     []);

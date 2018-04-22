@@ -12,6 +12,14 @@ test('build a skeleton', async t => {
   const newPath = await create('polymer-skeleton', undefined, true);
   await build(newPath);
   const files = await getFiles(join(newPath, 'dist'));
-  const relativePaths = files.map(file => relative(newPath, file));
+
+  const precacheFiles = files.filter(item => item.includes('precache'));
+  t.true(precacheFiles.length === 2);
+
+  const relativePaths = files
+    .filter(item => !item.includes('precache'))
+    .map(file => relative(newPath, file))
+    .sort();
+
   t.deepEqual(relativePaths, snapBuild(isWin));
 });

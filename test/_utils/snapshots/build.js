@@ -11,19 +11,15 @@ const files = [
   'dist/assets/icons/safari-pinned-tab.svg',
   'dist/assets/logo.svg',
   'dist/bundle.js',
-  'dist/bundle.js.map',
   'dist/index.html',
   'dist/manifest.json',
   'dist/module.bundle.js',
-  'dist/module.bundle.js.map',
   'dist/sw.js',
   'dist/vendor/custom-elements-es5-adapter.js',
   'dist/vendor/webcomponents-hi-sd-ce.js',
   'dist/vendor/webcomponents-lite.js',
   'dist/vendor/webcomponents-loader.js',
-  'dist/vendor/webcomponents-sd-ce.js',
-  'dist/workbox-sw.prod.v2.1.2.js',
-  'dist/workbox-sw.prod.v2.1.2.js.map'
+  'dist/vendor/webcomponents-sd-ce.js'
 ];
 
 module.exports = isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files;
