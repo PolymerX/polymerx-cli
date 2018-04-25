@@ -26,7 +26,7 @@ More to come...
 > NOTE: Node.js >= 6.x required.
 
 ```bash
-$ yarn add global polymerx-cli
+$ yarn global add polymerx-cli
 ```
 
 Or with NPM
