@@ -20,6 +20,7 @@ export default asyncCommand({
     },
     nomodule: {
       description: 'Build ES5 bundle for oldie browsers',
+      type: 'boolean',
       default: false
     },
     port: {
