@@ -42,14 +42,17 @@ export default asyncCommand({
     workers: {
       description: 'Add a Service Workers to the application.',
       alias: 'w',
+      type: 'boolean',
       default: true
     },
     clean: {
       description: 'Clear output directory before building.',
+      type: 'boolean',
       default: true
     },
     json: {
       description: 'Generate build statistics for analysis.',
+      type: 'boolean',
       default: false
     }
     // TODO

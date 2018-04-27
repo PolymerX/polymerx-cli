@@ -96,6 +96,7 @@ export default asyncCommand({
     },
     force: {
       description: 'Force option to create the directory for the new app',
+      type: 'boolean',
       default: false
     },
     yarn: {
