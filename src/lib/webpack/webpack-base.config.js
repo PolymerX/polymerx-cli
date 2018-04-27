@@ -16,7 +16,8 @@ const shared = argv => {
     nomodule,
     pkg,
     cwd,
-    https
+    https,
+    workers
   } = argv;
 
   const IS_MODULE_BUILD = !nomodule;
@@ -79,20 +80,25 @@ const shared = argv => {
   /**
    * Plugin configuration
    */
-  const plugins = [].concat(isProd ? [
-    new GenerateSW({
-      globDirectory: OUTPUT_PATH,
-      globPatterns: ['**/!(*map*)'],
-      swDest: join(OUTPUT_PATH, 'sw.js')
-    }),
+  const sharedPlugins = [new webpack.DefinePlugin({'process.env': processEnv})];
+
+  const devPlugins = [
+    new CopyWebpackPlugin(copyStatics.copyWebcomponents),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ];
+
+  const buildPlugins = [
     new CopyWebpackPlugin(
       [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
     )
-  ] : [new CopyWebpackPlugin(copyStatics.copyWebcomponents)]).concat([
-    new webpack.DefinePlugin({'process.env': processEnv}),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
-  ]);
+  ].concat(workers ? new GenerateSW({
+    globDirectory: OUTPUT_PATH,
+    globPatterns: ['**/!(*map*)'],
+    swDest: join(OUTPUT_PATH, 'sw.js')
+  }) : []);
+
+  const plugins = sharedPlugins.concat(isProd ? buildPlugins : devPlugins);
 
   return {
     mode: ENV,
