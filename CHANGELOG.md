@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/PolymerX/polymerx-cli/compare/v0.2.0...v0.2.1) (2018-04-27)
+
+
+### Bug Fixes
+
+* **cast-boolean:** added cast on boolean args ([b61d55b](https://github.com/PolymerX/polymerx-cli/commit/b61d55b))
+* **travis:** to max node 9... ([86dde38](https://github.com/PolymerX/polymerx-cli/commit/86dde38))
+* **workers:** refactor plugins includes and added check for workers ([44368ac](https://github.com/PolymerX/polymerx-cli/commit/44368ac))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/PolymerX/polymerx-cli/compare/v0.1.0...v0.2.0) (2018-04-22)
 
