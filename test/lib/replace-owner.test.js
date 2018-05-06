@@ -2,7 +2,7 @@ import {resolve} from 'path';
 import {writeFile, readFile, unlink} from 'fs';
 import promisify from 'pify';
 import test from 'ava';
-import replaceOwner from './../../dist/lib/replace-owner';
+import replaceOwner from '../../dist/lib/replace-owner';
 
 const pWrite = promisify(writeFile);
 const pRead = promisify(readFile);

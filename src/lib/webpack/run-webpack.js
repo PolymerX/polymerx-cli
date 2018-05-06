@@ -6,7 +6,7 @@ import clear from 'console-clear';
 import webpack from 'webpack';
 import DevServer from 'webpack-dev-server';
 
-import isDir from './../is-dir';
+import isDir from '../is-dir';
 import {endMessage, detailMessage, showStats} from './log-stats';
 
 import webpackConfig from './webpack-base.config';

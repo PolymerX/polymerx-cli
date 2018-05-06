@@ -67,7 +67,7 @@ const textify = (logoASCII, text, useColor) => {
     for (let index = 3; index <= height; index++) {
       logo[index] = color(
         COLOR_CODE, logo[index].substring(0, start)) + color(0, logo[index].substring(start)
-        );
+      );
     }
   }
 

@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import asyncCommand from '../lib/async-command';
-import runWebpack from './../lib/webpack/run-webpack';
-import getPkg from './../lib/get-pkg';
-import getSSLCert from './../lib/ssl-cert';
+import runWebpack from '../lib/webpack/run-webpack';
+import getPkg from '../lib/get-pkg';
+import getSSLCert from '../lib/ssl-cert';
 
 export default asyncCommand({
   command: 'watch [src]',

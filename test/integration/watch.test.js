@@ -3,8 +3,8 @@ import {resolve} from 'path';
 import {readFile, writeFile} from 'fs';
 import promisify from 'pify';
 import test from 'ava';
-import {create, watch} from './../_utils/cli';
-import {startChrome, loadPage, getWelcomeText} from './../_utils/chrome';
+import {create, watch} from '../_utils/cli';
+import {startChrome, loadPage, getWelcomeText} from '../_utils/chrome';
 
 const pRead = promisify(readFile);
 const pWrite = promisify(writeFile);

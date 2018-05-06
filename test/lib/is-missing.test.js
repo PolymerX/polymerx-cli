@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import snapIsMissing from './../_utils/snapshots/is-missing';
-import isMissing from './../../dist/lib/is-missing';
+import snapIsMissing from '../_utils/snapshots/is-missing';
+import isMissing from '../../dist/lib/is-missing';
 
 test('all missing (except "template")', t => {
   const res = isMissing({template: 'test'});
