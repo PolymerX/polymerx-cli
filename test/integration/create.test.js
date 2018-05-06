@@ -2,9 +2,9 @@
 import {relative} from 'path';
 
 import test from 'ava';
-import {create} from './../_utils/cli';
-import getFiles from './../_utils/get-files';
-import snapCreate from './../_utils/snapshots/create';
+import {create} from '../_utils/cli';
+import getFiles from '../_utils/get-files';
+import snapCreate from '../_utils/snapshots/create';
 
 const isWin = process.platform === 'win32';
 

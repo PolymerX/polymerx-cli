@@ -2,12 +2,12 @@ import {resolve} from 'path';
 import rimraf from 'rimraf';
 import ora from 'ora';
 import promisify from 'pify';
-import isDir from './../lib/is-dir';
-import getPkg from './../lib/get-pkg';
-import error from './../lib/error';
-import {showStats, endMessage, endBuildMessage} from './../lib/webpack/log-stats';
-import runWebpack from './../lib/webpack/run-webpack';
-import asyncCommand from './../lib/async-command';
+import isDir from '../lib/is-dir';
+import getPkg from '../lib/get-pkg';
+import error from '../lib/error';
+import {showStats, endMessage, endBuildMessage} from '../lib/webpack/log-stats';
+import runWebpack from '../lib/webpack/run-webpack';
+import asyncCommand from '../lib/async-command';
 
 const pRimRaf = promisify(rimraf);
 

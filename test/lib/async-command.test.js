@@ -1,5 +1,5 @@
 import test from 'ava';
-import asyncCommand from './../../dist/lib/async-command';
+import asyncCommand from '../../dist/lib/async-command';
 
 const mockHandler = () => Promise.resolve('Nice');
 

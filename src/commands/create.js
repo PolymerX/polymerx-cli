@@ -7,14 +7,14 @@ import {prompt} from 'inquirer';
 import validateName from 'validate-npm-package-name';
 import gitUser from 'git-user-local';
 import replaceOwner from '../lib/replace-owner';
-import isMissing from './../lib/is-missing';
-import asyncCommand from './../lib/async-command';
-import which from './../lib/which';
-import error from './../lib/error';
-import isDir from './../lib/is-dir';
-import extractTar from './../lib/extract-tar';
-import install from './../lib/install';
-import getPkg from './../lib/get-pkg';
+import isMissing from '../lib/is-missing';
+import asyncCommand from '../lib/async-command';
+import which from '../lib/which';
+import error from '../lib/error';
+import isDir from '../lib/is-dir';
+import extractTar from '../lib/extract-tar';
+import install from '../lib/install';
+import getPkg from '../lib/get-pkg';
 
 const ORG = 'PolymerX';
 

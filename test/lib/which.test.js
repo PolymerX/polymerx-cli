@@ -1,5 +1,5 @@
 import test from 'ava';
-import which from './../../dist/lib/which';
+import which from '../../dist/lib/which';
 
 test('correctly check that yarn exist', async t => {
   const res = await which('yarn');
