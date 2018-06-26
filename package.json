@@ -59,7 +59,7 @@
     "clean-webpack-plugin": "0.1.19",
     "cli-table": "0.3.1",
     "console-clear": "1.1.0",
-    "copy-webpack-plugin": "4.5.1",
+    "copy-webpack-plugin": "4.5.2",
     "devcert-san": "0.3.3",
     "execa": "0.10.0",
     "get-port": "3.2.0",
