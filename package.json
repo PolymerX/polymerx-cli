@@ -69,7 +69,7 @@
     "ora": "2.1.0",
     "phunctional": "0.2.1",
     "pify": "3.0.0",
-    "postcss-loader": "2.1.5",
+    "postcss-loader": "2.1.6",
     "raw-loader": "0.5.1",
     "replace-in-file": "3.4.0",
     "validate-npm-package-name": "3.0.0",
