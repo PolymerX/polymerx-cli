@@ -33,6 +33,7 @@ const files = [
   'src/index.html',
   'src/index.js',
   'src/manifest.json',
+  'src/sw-loader.js',
   'test/suites/sk-app.html',
   'wct.conf.js',
   'webpack.config.js'
