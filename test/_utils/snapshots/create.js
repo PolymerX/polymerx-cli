@@ -12,8 +12,6 @@ const files = [
   'package.json',
   'postcss.config.js',
   'README.md',
-  'scripts/link-bower.js',
-  'scripts/postinstall.js',
   'src/assets/AnimatedSkeleton.svg',
   'src/assets/icons/apple-touch-icon.png',
   'src/assets/icons/browserconfig.xml',
@@ -40,8 +38,6 @@ const files = [
   'src/manifest.json',
   'test/suites/sk-app.html',
   'wct.conf.js',
-  'webpack-module.config.js',
-  'webpack-nomodule.config.js',
   'webpack.config.js'
 ];
 
