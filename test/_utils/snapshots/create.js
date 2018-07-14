@@ -35,8 +35,7 @@ const files = [
   'src/manifest.json',
   'src/sw-loader.js',
   'test/suites/sk-app.html',
-  'wct.conf.js',
-  'webpack.config.js'
+  'wct.conf.js'
 ];
 
 module.exports = isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files;
