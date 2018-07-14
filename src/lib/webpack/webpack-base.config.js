@@ -3,9 +3,37 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import {GenerateSW} from 'workbox-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 import moduleConf from './webpack-module.config';
 import nomoduleConf from './webpack-nomodule.config';
+
+const renderHtmlPlugins = (outputPath, isProd, src) =>
+  [
+    new HtmlWebpackPlugin({
+      filename: resolve(outputPath, 'index.html'),
+      template: `!!ejs-loader!${resolve(src, 'index.html')}`,
+      minify: isProd && {
+        collapseWhitespace: true,
+        removeScriptTypeAttributes: true,
+        removeRedundantAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeComments: true
+      },
+      inject: true,
+      compile: true,
+      excludeAssets: [/(bundle|polyfills)(\..*)?\.js$/],
+      paths: {
+        webcomponents: './vendor/webcomponents-loader.js'
+      }
+    }),
+    new HtmlWebpackExcludeAssetsPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'
+    })
+  ];
 
 const shared = argv => {
   const {
@@ -84,7 +112,10 @@ const shared = argv => {
   /**
    * Plugin configuration
    */
-  const sharedPlugins = [new webpack.DefinePlugin({'process.env': processEnv})];
+  const sharedPlugins = [
+    new webpack.DefinePlugin({'process.env': processEnv}),
+    ...renderHtmlPlugins(OUTPUT_PATH, isProd, src)
+  ];
 
   const devPlugins = [
     new CopyWebpackPlugin(copyStatics.copyWebcomponents),
