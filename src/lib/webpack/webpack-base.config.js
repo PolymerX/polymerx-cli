@@ -128,9 +128,8 @@ const shared = argv => {
       [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
     )
   ].concat(workers ? new GenerateSW({
-    globDirectory: OUTPUT_PATH,
-    globPatterns: ['**/!(*map*)'],
-    swDest: join(OUTPUT_PATH, 'sw.js')
+    swDest: join(OUTPUT_PATH, 'sw.js'),
+    skipWaiting: true
   }) : []);
 
   const plugins = sharedPlugins.concat(isProd ? buildPlugins : devPlugins);
