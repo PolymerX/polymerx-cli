@@ -6,14 +6,9 @@ const files = [
   '.stylelintrc',
   '.travis.yml',
   '.yarnrc',
-  'CHANGELOG.md',
-  'CODE_OF_CONDUCT.md',
-  'LICENSE.md',
   'package.json',
   'postcss.config.js',
   'README.md',
-  'scripts/link-bower.js',
-  'scripts/postinstall.js',
   'src/assets/AnimatedSkeleton.svg',
   'src/assets/icons/apple-touch-icon.png',
   'src/assets/icons/browserconfig.xml',
@@ -38,11 +33,9 @@ const files = [
   'src/index.html',
   'src/index.js',
   'src/manifest.json',
+  'src/sw-loader.js',
   'test/suites/sk-app.html',
-  'wct.conf.js',
-  'webpack-module.config.js',
-  'webpack-nomodule.config.js',
-  'webpack.config.js'
+  'wct.conf.js'
 ];
 
 module.exports = isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files;

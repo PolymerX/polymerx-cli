@@ -16,7 +16,7 @@ import extractTar from '../lib/extract-tar';
 import install from '../lib/install';
 import getPkg from '../lib/get-pkg';
 
-const ORG = 'PolymerX';
+const ORG = 'PolymerX-skeleton-templates';
 
 const getAuthor = async () => {
   const {user} = await gitUser();

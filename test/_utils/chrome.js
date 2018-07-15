@@ -1,28 +1,25 @@
 const puppeteer = require('puppeteer');
 
-const startChrome = () => {
+const startChrome = async () => {
   console.log('Launching Chrome');
-  return puppeteer.launch({args: [
+  const browser = await puppeteer.launch({args: [
     '--window-size=1024,768',
     '--disable-gpu',
     '--enable-logging',
     '--no-sandbox'
-  ]}).then(browser => {
-    const endpoint = browser.wsEndpoint();
-    console.log(endpoint);
-    return browser;
-  });
+  ]});
+
+  const endpoint = browser.wsEndpoint();
+  console.log(endpoint);
+  return browser;
 };
 
-const loadPage = (browser, url) => {
-  return browser.newPage()
-    .then(page =>
-      new Promise(resolve =>
-        page.goto(url, {
-          waitUntil: 'networkidle0'
-        }).then(() => resolve(page))
-      )
-    );
+const loadPage = async (browser, url) => {
+  const page = await browser.newPage();
+  return new Promise(async resolve => {
+    await page.goto(url, {waitUntil: 'networkidle0'});
+    resolve(page);
+  });
 };
 
 const getWelcomeText = page => page.evaluate(() => {
