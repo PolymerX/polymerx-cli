@@ -2,7 +2,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/PolymerX/polymerx-cli.svg)](https://greenkeeper.io/)
 
-[![npm](https://img.shields.io/npm/v/polymerx-cli.svg?style=flat-square)](https://github.com/PolymerX/polymerx-cli) 🚧 [not-stable]
+[![npm](https://img.shields.io/npm/v/polymerx-cli.svg?style=flat-square)](https://github.com/PolymerX/polymerx-cli)
 
 [![Build Status](https://travis-ci.org/PolymerX/polymerx-cli.svg?branch=master)](https://travis-ci.org/PolymerX/polymerx-cli) [![Build status](https://ci.appveyor.com/api/projects/status/wkxltr345600y1ih?svg=true)](https://ci.appveyor.com/project/LasaleFamine/polymerx-cli)
  [![codecov](https://codecov.io/gh/PolymerX/polymerx-cli/badge.svg?branch=master)](https://codecov.io/gh/PolymerX/polymerx-cli?branch=master)
