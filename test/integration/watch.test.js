@@ -23,9 +23,7 @@ test('should create development server with hot reloading.', async t => {
   await watch(app, '127.0.0.1', 8083);
   await wait(15000);
   const page = await loadPage(chrome, 'http://127.0.0.1:8083/');
-  console.log('Page LOADED');
   const oldWelcomeText = await getWelcomeText(page);
-  console.log('OLD WELCOME TEXT', oldWelcomeText);
   await wait(2000);
 
   // Change files
@@ -34,7 +32,7 @@ test('should create development server with hot reloading.', async t => {
     .replace('<h1 class="Title">Web Components — Now.</h1>', '<h1 class="Title">Test App</h1>');
   await pWrite(templateAppFile, newTemplateSource);
 
-  await wait(8000);
+  await wait(5000);
   const welcomeText = await getWelcomeText(page);
 
   t.false(oldWelcomeText.includes('Test App'));

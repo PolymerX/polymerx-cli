@@ -19,7 +19,7 @@
     "polymerx": "dist/cli.js"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "scripts": {
     "dev": "babel-node src/cli.js",
