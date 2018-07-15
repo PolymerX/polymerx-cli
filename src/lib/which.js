@@ -3,4 +3,7 @@ import which from 'which';
 
 const pWhich = promisify(which);
 
-export default program => pWhich(program).then(res => Boolean(res));
+export default async program => {
+  const res = await pWhich(program);
+  return Boolean(res);
+};
