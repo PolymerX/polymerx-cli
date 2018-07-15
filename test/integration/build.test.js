@@ -9,7 +9,7 @@ import snapBuild from '../_utils/snapshots/build';
 const isWin = process.platform === 'win32';
 
 test('build a skeleton', async t => {
-  const newPath = await create('polymer-skeleton', undefined, true);
+  const newPath = await create('default', undefined, true);
   await build(newPath);
   const files = await getFiles(join(newPath, 'dist'));
 

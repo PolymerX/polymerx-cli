@@ -16,7 +16,7 @@ let chrome;
 test.after.always(() => isWin ? null : chrome.close());
 
 test('should create development server with hot reloading.', async t => {
-  const app = await create('polymer-skeleton', undefined, true);
+  const app = await create('default', undefined, true);
   const templateAppFile = resolve(app, './src/components/containers/sk-app/template.html');
 
   chrome = await startChrome();

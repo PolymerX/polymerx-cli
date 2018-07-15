@@ -14,7 +14,7 @@ const run = (command, args, cwd) => {
     });
 };
 
-const create = (template, name, install) => {
+const create = async (template, name, install) => {
   const dest = tmpDir();
   const args = [CLI, 'create', template, dest, '--name']
     .concat(name || `test-${template}`)
@@ -24,7 +24,8 @@ const create = (template, name, install) => {
     'Creating skeleton project for testing...',
     install ? ' \n--install enable, will take few minutes.' : ''
   );
-  return run('node', args).then(() => dest);
+  await run('node', args);
+  return dest;
 };
 
 const watch = (appDir, host, port) => {
