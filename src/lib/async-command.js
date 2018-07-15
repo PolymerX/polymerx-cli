@@ -1,5 +1,6 @@
 
-/* eslint-disable unicorn/no-process-exit */
+/* eslint-disable unicorn/no-process-exit  */
+/* eslint-disable promise/prefer-await-to-then */
 
 const done = (err, result) => {
   return err ?

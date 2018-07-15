@@ -3,9 +3,37 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import {GenerateSW} from 'workbox-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 import moduleConf from './webpack-module.config';
 import nomoduleConf from './webpack-nomodule.config';
+
+const renderHtmlPlugins = (outputPath, isProd, src) =>
+  [
+    new HtmlWebpackPlugin({
+      filename: resolve(outputPath, 'index.html'),
+      template: `!!ejs-loader!${resolve(src, 'index.html')}`,
+      minify: isProd && {
+        collapseWhitespace: true,
+        removeScriptTypeAttributes: true,
+        removeRedundantAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeComments: true
+      },
+      inject: true,
+      compile: true,
+      excludeAssets: [/(bundle|polyfills)(\..*)?\.js$/],
+      paths: {
+        webcomponents: './vendor/webcomponents-loader.js'
+      }
+    }),
+    new HtmlWebpackExcludeAssetsPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'
+    })
+  ];
 
 const shared = argv => {
   const {
@@ -46,20 +74,24 @@ const shared = argv => {
       to: join(OUTPUT_PATH, 'vendor'),
       flatten: true
     }, {
-      from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js'),
+      from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js'),
       to: join(OUTPUT_PATH, 'vendor'),
       flatten: true
     }, {
-      from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js'),
-      to: join(OUTPUT_PATH, 'vendor'),
+      from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-ce.js'),
+      to: join(OUTPUT_PATH, 'vendor', 'bundles'),
       flatten: true
     }, {
-      from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js'),
-      to: join(OUTPUT_PATH, 'vendor'),
+      from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js'),
+      to: join(OUTPUT_PATH, 'vendor', 'bundles'),
       flatten: true
     }, {
-      from: resolve('./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'),
-      to: join(OUTPUT_PATH, 'vendor'),
+      from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js'),
+      to: join(OUTPUT_PATH, 'vendor', 'bundles'),
+      flatten: true
+    }, {
+      from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd.js'),
+      to: join(OUTPUT_PATH, 'vendor', 'bundles'),
       flatten: true
     }],
     copyOthers: [{
@@ -80,7 +112,10 @@ const shared = argv => {
   /**
    * Plugin configuration
    */
-  const sharedPlugins = [new webpack.DefinePlugin({'process.env': processEnv})];
+  const sharedPlugins = [
+    new webpack.DefinePlugin({'process.env': processEnv}),
+    ...renderHtmlPlugins(OUTPUT_PATH, isProd, src)
+  ];
 
   const devPlugins = [
     new CopyWebpackPlugin(copyStatics.copyWebcomponents),
@@ -93,9 +128,8 @@ const shared = argv => {
       [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
     )
   ].concat(workers ? new GenerateSW({
-    globDirectory: OUTPUT_PATH,
-    globPatterns: ['**/!(*map*)'],
-    swDest: join(OUTPUT_PATH, 'sw.js')
+    swDest: join(OUTPUT_PATH, 'sw.js'),
+    skipWaiting: true
   }) : []);
 
   const plugins = sharedPlugins.concat(isProd ? buildPlugins : devPlugins);
