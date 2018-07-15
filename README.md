@@ -37,6 +37,10 @@ Or with NPM
 $ npm install -g polymerx-cli
 ```
 
+## Templates
+
+Official templates are available at [https://github.com/Polymerx-skeleton-templates](PolymerX Skeleton Templates)
+
 
 ## Usage
 
