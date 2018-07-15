@@ -4,9 +4,10 @@ const glob = require('glob');
 
 const pGlob = promisify(glob);
 
-module.exports = (dir, opts) => {
+module.exports = async (dir, opts) => {
   const ignores = x => !/node_modules|yarn.lock/i.test(x);
   const templatePath = resolve(dir);
   const options = Object.assign({}, opts, {dot: true, nodir: true});
-  return pGlob(`${templatePath}/**`, options).then(arr => arr.filter(ignores));
+  const arr = await pGlob(`${templatePath}/**`, options);
+  return arr.filter(ignores);
 };

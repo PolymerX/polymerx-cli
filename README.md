@@ -25,7 +25,7 @@ More to come...
 
 ## Install
 
-> NOTE: Node.js >= 6.x required.
+> NOTE: Node.js >= 8.x required.
 
 ```bash
 $ yarn global add polymerx-cli
