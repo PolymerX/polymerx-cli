@@ -9,8 +9,8 @@ test('all missing (except "template")', t => {
   t.deepEqual(res, snap);
 });
 
-test('all missing (except "name" and "git")', t => {
+test('all missing (except "git")', t => {
   const res = isMissing({name: 'test', git: false});
-  const snap = snapIsMissing(['name', 'git']);
+  const snap = snapIsMissing(['git']);
   t.deepEqual(res, snap);
 });
