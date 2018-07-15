@@ -65,14 +65,12 @@ const getStarted = (destFolder, isYarn) => {
   const text = `
     To get started, cd into the new directory:
       cd ${destFolder}
-    To start a the dev server with live-reload (for browsers with ES6 module support):
-      ${prefix} dev:module
     To start a the dev server with live-reload (for browsers WITHOUT ES6 module support):
       ${prefix} dev
     To create a production build (in ./dist):
       ${prefix} build
     To start a production HTTP server:
-      PORT=3000 ${prefix} start
+      ${prefix} start
   `;
   return console.log(text.trim().replace(/^\t+/gm, ''), '\n');
 };
