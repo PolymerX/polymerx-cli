@@ -11,16 +11,6 @@ import asyncCommand from '../lib/async-command';
 
 const pRimRaf = promisify(rimraf);
 
-const mergeAssets = (moduleStats, nomoduleStats) => {
-  const moduleAssets = moduleStats.toJson().assets;
-  const nomoduleAssets = nomoduleStats.toJson().assets;
-
-  return moduleAssets
-    .concat(nomoduleAssets
-      .filter(nomodule => !moduleAssets.find(module => nomodule.name === module.name))
-    );
-};
-
 export default asyncCommand({
   command: 'build [src] [dest]',
 
@@ -91,16 +81,11 @@ export default asyncCommand({
     spinner.text = 'Running compiler...';
 
     try {
-      const {resModule, resNomodule} = await runWebpack(newArgv);
-
-      endBuildMessage(resModule, 'Module', spinner);
-      endBuildMessage(resNomodule, 'NoModule', spinner);
-
+      const results = await runWebpack(newArgv);
+      endBuildMessage(results, spinner);
       // Be sure to show errors/warnings if present
-      showStats(resModule);
-      showStats(resNomodule);
-
-      endMessage(mergeAssets(resModule, resNomodule));
+      showStats(results);
+      endMessage(results);
     } catch (err) {
       console.error('\n' + err);
     }

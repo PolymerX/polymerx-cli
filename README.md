@@ -90,7 +90,7 @@ $ polymerx watch --help
 
 ### 📦 polymerx build
 
-Create a production build with `module` build, `no-module` build and Service Workers.
+Create a production build with (or without) Service Workers.
 ##### IMPORTANT: `postcss` configuration file must be present.
 
 ```
