@@ -48,11 +48,11 @@ Official templates are available at https://github.com/Polymerx-skeleton-templat
 $ polymerx create <template-name> <project-name>
 ```
 
-> IMPORTANT: currently supported only `polymer-skeleton` as template.
+> IMPORTANT: currently supported only `default` as template.
 
 Example:
 ```bash
-$ polymerx create polymer-skeleton my-awesome-project
+$ polymerx create default my-awesome-project
 ```
 
 ## CLI commands
@@ -105,16 +105,6 @@ $ polymerx build --help
   --dest            Directory root for output.                   [string]   [default: "dist"]
   --workers, -w     Add a service worker to application.         [boolean]  [default: true]
   --clean           Clear output directory before building.      [boolean]  [default: true]
-```
-
-## Caveat for `create` command
-
-Currently is reccomanded to start with a specific branch of the Polymer Skeleton repository: [polymer-skeleton#polymerx-cli](https://github.com/PolymerX/polymer-skeleton/tree/polymerx-cli). This is the "light" version of the Skeleton, without Webpack dependencies and with the `polymerx-cli` as build tool already configured.
-
-Here is how to start with that branch:
-
-```
-$ polymerx create polymer-skeleton#polymerx-cli your-dir-project
 ```
 
 ## About this tool
