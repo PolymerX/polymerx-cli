@@ -10,12 +10,6 @@ const options = [{
   default: undefined
 },
 {
-  name: 'name',
-  message: 'The application\'s name',
-  type: 'input',
-  default: undefined
-},
-{
   name: 'force',
   message: 'Enforce `dest` directory; will overwrite!',
   type: 'confirm',

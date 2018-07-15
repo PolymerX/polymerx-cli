@@ -14,7 +14,7 @@ test('build a skeleton', async t => {
   const files = await getFiles(join(newPath, 'dist'));
 
   const precacheFiles = files.filter(item => item.includes('precache'));
-  t.true(precacheFiles.length === 2);
+  t.true(precacheFiles.length === 1);
 
   const relativePaths = files
     .filter(item => !item.includes('precache'))
