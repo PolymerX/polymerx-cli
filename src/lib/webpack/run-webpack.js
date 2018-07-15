@@ -11,7 +11,7 @@ import {endMessage, detailMessage, showStats} from './log-stats';
 
 import webpackConfig from './webpack-base.config';
 
-const runProdCompiler = (compiler) => {
+const runProdCompiler = compiler => {
   return new Promise((resolve, reject) =>
     compiler.run(async (err, stats) => {
       // On stats error/warnings
@@ -56,6 +56,8 @@ const devBuild = async argv => {
         assets: stats.toJson({assets: true}).assets
       });
       showStats(stats);
+
+      // DO NOT resolve() since is a watching task
     });
 
     compiler.plugin('failed', reject);

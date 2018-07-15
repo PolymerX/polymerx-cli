@@ -39,7 +39,6 @@ const shared = argv => {
     src,
     srcDir,
     dest,
-    nomodule,
     pkg,
     cwd,
     https,
