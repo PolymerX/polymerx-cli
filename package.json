@@ -90,7 +90,7 @@
     "codecov": "3.0.4",
     "glob": "7.1.2",
     "nyc": "12.0.2",
-    "puppeteer": "1.5.0",
+    "puppeteer": "1.6.0",
     "rimraf": "2.6.2",
     "standard-version": "4.4.0",
     "uuid": "3.3.2",
