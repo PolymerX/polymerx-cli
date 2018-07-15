@@ -6,9 +6,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
-
-import moduleConf from './webpack-module.config';
-import nomoduleConf from './webpack-nomodule.config';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const renderHtmlPlugins = (outputPath, isProd, src) =>
   [
@@ -41,14 +39,12 @@ const shared = argv => {
     src,
     srcDir,
     dest,
-    nomodule,
     pkg,
     cwd,
     https,
     workers
   } = argv;
 
-  const IS_MODULE_BUILD = !nomodule;
   const ENV = isProd ? 'production' : 'development';
   const OUTPUT_PATH = isProd ? resolve(dest || 'dist') : resolve(src || 'src');
 
@@ -124,6 +120,9 @@ const shared = argv => {
   ];
 
   const buildPlugins = [
+    new CleanWebpackPlugin([resolve(OUTPUT_PATH)], {
+      allowExternal: true, verbose: false
+    }),
     new CopyWebpackPlugin(
       [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
     )
@@ -139,8 +138,9 @@ const shared = argv => {
     entry: ENTRY,
     output: {
       path: OUTPUT_PATH,
-      filename: IS_MODULE_BUILD ? 'module.bundle.js' : 'bundle.js'
+      filename: 'bundle.js'
     },
+    devtool: 'cheap-source-map',
     resolve: {
       modules: [
         'node_modules',
@@ -161,6 +161,32 @@ const shared = argv => {
       {
         test: /\.pcss$/,
         use: ['raw-loader', 'postcss-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [[
+              require.resolve('babel-preset-env'),
+              {
+                targets: {
+                  browsers: [
+                    // Best practice: https://github.com/babel/babel/issues/7789
+                    '>=1%',
+                    'not ie 11',
+                    'not op_mini all'
+                  ]
+                },
+                debug: !isProd
+              }
+            ]],
+            plugins: [
+              [require.resolve('babel-plugin-transform-object-rest-spread'), {useBuiltIns: true}]
+            ]
+          }
+        }
       }]
     },
     plugins,
@@ -190,4 +216,5 @@ const shared = argv => {
 };
 
 export default (argv = {}) =>
-  merge(argv.nomodule ? nomoduleConf(argv) : moduleConf(argv), shared(argv));
+  // TODO: ready for custom conf to be merged
+  merge(shared(argv));

@@ -11,7 +11,7 @@ import {endMessage, detailMessage, showStats} from './log-stats';
 
 import webpackConfig from './webpack-base.config';
 
-const runProdCompiler = (compiler, type) => {
+const runProdCompiler = compiler => {
   return new Promise((resolve, reject) =>
     compiler.run(async (err, stats) => {
       // On stats error/warnings
@@ -19,7 +19,7 @@ const runProdCompiler = (compiler, type) => {
 
       // On compiler error
       if (err || (stats && stats.hasErrors())) {
-        reject(chalk.red(`⚠️ ${type} build failed! ${err || ''}`));
+        reject(chalk.red(`⚠️ build failed! ${err || ''}`));
       }
 
       // Timeout for plugins that work on `after-emit` event of webpack
@@ -56,6 +56,8 @@ const devBuild = async argv => {
         assets: stats.toJson({assets: true}).assets
       });
       showStats(stats);
+
+      // DO NOT resolve() since is a watching task
     });
 
     compiler.plugin('failed', reject);
@@ -64,14 +66,10 @@ const devBuild = async argv => {
 };
 
 const prodBuild = async argv => {
-  const configModule = webpackConfig(argv);
-  const configNoModule = webpackConfig(Object.assign({}, argv, {nomodule: true}));
-  const compilerModule = webpack(configModule);
-  const compilerNoModule = webpack(configNoModule);
+  const config = webpackConfig(argv);
+  const compiler = webpack(config);
 
-  const resModule = await runProdCompiler(compilerModule, 'module');
-  const resNomodule = await runProdCompiler(compilerNoModule, 'no-module');
-  return {resModule, resNomodule};
+  return runProdCompiler(compiler);
 };
 
 export default argv => {

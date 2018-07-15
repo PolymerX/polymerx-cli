@@ -54,10 +54,10 @@ export function endMessage(statsAssets, error) {
   log(table.toString() + '\n\n');
 }
 
-export function endBuildMessage(stats, type, spinner) {
+export function endBuildMessage(stats, spinner) {
   return stats.hasErrors() ?
-    spinner.fail(`Build failed! [type: ${type}]`) :
-    spinner.succeed(`Compiled! [type: ${type}] `);
+    spinner.fail(`Build failed!`) :
+    spinner.succeed(`Compiled! `);
 }
 
 export function detailMessage(err, {port, userPort, serverAddr, nomodule}) {

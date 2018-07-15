@@ -18,11 +18,6 @@ export default asyncCommand({
       description: 'Entry file (index.js)',
       default: 'src'
     },
-    nomodule: {
-      description: 'Build ES5 bundle for oldie browsers',
-      type: 'boolean',
-      default: false
-    },
     port: {
       description: 'Port to start a server on',
       default: '8080',

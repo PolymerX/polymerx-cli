@@ -1,6 +1,6 @@
 import {switchcase} from 'phunctional';
 
-const KEYS = ['template', 'dest', 'name', 'force', 'yarn', 'git', 'install'];
+const KEYS = ['template', 'dest', 'force', 'yarn', 'git', 'install'];
 
 const ask = (name, message, val) => {
   const type = val === undefined ? 'input' : 'confirm';
@@ -15,7 +15,6 @@ export default function isMissing(argv) {
       switchcase({
         template: ask('template', 'Remote template to clone (user/repo#tag)'),
         dest: ask('dest', 'Directory to create the app'),
-        name: ask('name', 'The application\'s name'),
         force: ask('force', 'Enforce `dest` directory; will overwrite!', false),
         yarn: ask('yarn', 'Install with `yarn` instead of `npm`', false),
         git: ask('git', 'Initialize a `git` repository', false),
