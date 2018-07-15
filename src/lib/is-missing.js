@@ -1,6 +1,6 @@
 import {switchcase} from 'phunctional';
 
-const KEYS = ['template', 'dest', 'name', 'force', 'yarn', 'git', 'install'];
+const KEYS = ['template', 'dest', 'force', 'yarn', 'git', 'install'];
 
 const ask = (name, message, val) => {
   const type = val === undefined ? 'input' : 'confirm';
