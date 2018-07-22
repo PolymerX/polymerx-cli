@@ -85,7 +85,7 @@ export default asyncCommand({
       endBuildMessage(results, spinner);
       // Be sure to show errors/warnings if present
       showStats(results);
-      endMessage(results);
+      endMessage(results.toJson().assets);
     } catch (err) {
       console.error('\n' + err);
     }
