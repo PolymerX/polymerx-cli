@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/PolymerX/polymerx-cli/compare/v0.3.0...v0.3.1) (2018-07-22)
+
+
+### Bug Fixes
+
+* **babel-core:** missing babel-core dep ([e6c5ba9](https://github.com/PolymerX/polymerx-cli/commit/e6c5ba9))
+* **build:** error on displaying stats on build ([97ba0ee](https://github.com/PolymerX/polymerx-cli/commit/97ba0ee))
+* **package:** update ora to version 3.0.0 ([6dcd0fa](https://github.com/PolymerX/polymerx-cli/commit/6dcd0fa))
+* **package:** update webpack to version 4.16.1 ([1b7b0fe](https://github.com/PolymerX/polymerx-cli/commit/1b7b0fe))
+* **package:** update webpack-dev-server to version 3.1.5 ([e4743a9](https://github.com/PolymerX/polymerx-cli/commit/e4743a9))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/PolymerX/polymerx-cli/compare/v0.2.2...v0.3.0) (2018-07-15)
 
