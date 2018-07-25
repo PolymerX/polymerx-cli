@@ -64,7 +64,7 @@
     "devcert-san": "0.3.3",
     "ejs-loader": "0.3.1",
     "execa": "0.10.0",
-    "get-port": "3.2.0",
+    "get-port": "4.0.0",
     "git-user-local": "0.2.0",
     "gittar": "0.1.1",
     "html-webpack-exclude-assets-plugin": "0.0.7",

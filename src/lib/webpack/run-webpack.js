@@ -33,7 +33,7 @@ const runProdCompiler = compiler => {
 const devBuild = async argv => {
   const config = webpackConfig(argv);
   const userPort = Number(process.env.PORT || config.devServer.port) || 8080;
-  const port = await getPort(userPort);
+  const port = await getPort({port: userPort});
   const compiler = webpack(config);
 
   return new Promise((resolve, reject) => {
