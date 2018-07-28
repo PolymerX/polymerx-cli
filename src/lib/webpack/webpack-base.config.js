@@ -1,4 +1,5 @@
 import {resolve, join} from 'path';
+import findNodeModules from 'find-node-modules';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import {GenerateSW} from 'workbox-webpack-plugin';
@@ -47,6 +48,7 @@ const shared = argv => {
 
   const ENV = isProd ? 'production' : 'development';
   const OUTPUT_PATH = isProd ? resolve(dest || 'dist') : resolve(src || 'src');
+  const NODE_MODULES = findNodeModules({cwd, relative: false});
 
   const HOST = process.env.HOST || argv.host;
   const PORT = process.env.PORT || argv.port;
@@ -143,14 +145,14 @@ const shared = argv => {
     devtool: 'cheap-source-map',
     resolve: {
       modules: [
-        'node_modules',
+        ...NODE_MODULES,
         resolve(__dirname, '../../../node_modules')
       ]
     },
     resolveLoader: {
       modules: [
-        resolve(__dirname, '../../../node_modules'),
-        resolve(cwd, 'node_modules')
+        ...NODE_MODULES,
+        resolve(__dirname, '../../../node_modules')
       ]
     },
     module: {
