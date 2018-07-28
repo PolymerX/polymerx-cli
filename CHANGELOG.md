@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/PolymerX/polymerx-cli/compare/v0.3.1...v0.3.2) (2018-07-28)
+
+
+### Bug Fixes
+
+* **package:** update get-port to version 4.0.0 ([39ba4df](https://github.com/PolymerX/polymerx-cli/commit/39ba4df))
+* **package:** update webpack to version 4.16.2 ([4027b27](https://github.com/PolymerX/polymerx-cli/commit/4027b27))
+* **package:** update webpack to version 4.16.3 ([f3c3240](https://github.com/PolymerX/polymerx-cli/commit/f3c3240))
+* find node_modules in upwards directories ([78b1111](https://github.com/PolymerX/polymerx-cli/commit/78b1111))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/PolymerX/polymerx-cli/compare/v0.3.0...v0.3.1) (2018-07-22)
 
