@@ -185,7 +185,8 @@ const shared = argv => {
               }
             ]],
             plugins: [
-              [require.resolve('babel-plugin-transform-object-rest-spread'), {useBuiltIns: true}]
+              [require.resolve('babel-plugin-transform-object-rest-spread'), {useBuiltIns: true}],
+              [require.resolve('babel-plugin-syntax-dynamic-import')]
             ]
           }
         }
