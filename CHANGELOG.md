@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/PolymerX/polymerx-cli/compare/v0.3.2...v0.3.3) (2018-08-19)
+
+
+### Bug Fixes
+
+* **package:** update inquirer to version 6.1.0 ([37f2282](https://github.com/PolymerX/polymerx-cli/commit/37f2282))
+* **package:** update pify to version 4.0.0 ([13f6650](https://github.com/PolymerX/polymerx-cli/commit/13f6650))
+* **package:** update postcss-loader to version 3.0.0 ([915fdde](https://github.com/PolymerX/polymerx-cli/commit/915fdde))
+* **package:** update replace-in-file to version 3.4.2 ([466c4ee](https://github.com/PolymerX/polymerx-cli/commit/466c4ee))
+* **package:** update webpack to version 4.16.4 ([b8f1228](https://github.com/PolymerX/polymerx-cli/commit/b8f1228))
+* **package:** update webpack to version 4.16.5 ([6e97d4c](https://github.com/PolymerX/polymerx-cli/commit/6e97d4c))
+* **package:** update webpack-merge to version 4.1.4 ([23348d5](https://github.com/PolymerX/polymerx-cli/commit/23348d5))
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/PolymerX/polymerx-cli/compare/v0.3.1...v0.3.2) (2018-07-28)
 
