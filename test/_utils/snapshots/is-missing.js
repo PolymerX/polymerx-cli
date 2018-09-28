@@ -3,7 +3,8 @@ const options = [{
   message: 'Remote template to clone (user/repo#tag)',
   type: 'input',
   default: undefined
-}, {
+},
+{
   name: 'dest',
   message: 'Directory to create the app',
   type: 'input',

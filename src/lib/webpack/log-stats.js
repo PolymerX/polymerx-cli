@@ -56,8 +56,8 @@ export function endMessage(statsAssets, error) {
 
 export function endBuildMessage(stats, spinner) {
   return stats.hasErrors() ?
-    spinner.fail(`Build failed!`) :
-    spinner.succeed(`Compiled! `);
+    spinner.fail('Build failed!') :
+    spinner.succeed('Compiled!');
 }
 
 export function detailMessage(err, {port, userPort, serverAddr, nomodule}) {

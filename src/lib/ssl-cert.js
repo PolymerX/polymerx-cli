@@ -7,8 +7,8 @@ export default () => {
 
   return getDevelopmentCertificate('polymerx-cli', {
     installCertutil: true
-  }).catch(err => {
-    console.log(chalk.red(`Failed to generate dev SSL certificate: ${err}`));
+  }).catch(error => {
+    console.log(chalk.red(`Failed to generate dev SSL certificate: ${error}`));
     return false;
   });
 };

@@ -65,7 +65,7 @@ const devBuild = async argv => {
   });
 };
 
-const prodBuild = async argv => {
+const prodBuild = argv => {
   const config = webpackConfig(argv);
   const compiler = webpack(config);
 
@@ -79,13 +79,14 @@ export default argv => {
   const src = resolve(cwd, argv.src);
   const srcDir = isDir(src) ? src : dirname(src);
 
-  const newArgv = Object.assign({}, argv, {
+  const newArgv = {
+    ...argv,
     isProd: argv.production,
     cwd,
     src,
     srcDir,
     nomodule: argv.nomodule
-  });
+  };
 
   const fn = argv.production ? prodBuild : devBuild;
   return fn(newArgv);

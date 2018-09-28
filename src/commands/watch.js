@@ -55,7 +55,7 @@ export default asyncCommand({
       console.log(chalk.yellow('Reverting to `webpack-dev-server` internal certificate.'));
     }
 
-    const newArgv = Object.assign({}, argv, {production: false, pkg});
+    const newArgv = {...argv, production: false, pkg};
 
     // TODO: show time for compilation
     await runWebpack(newArgv);

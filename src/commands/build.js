@@ -75,7 +75,7 @@ export default asyncCommand({
     }
 
     const pkg = await getPkg(argv.cwd);
-    const newArgv = Object.assign({}, argv, {production: true, pkg});
+    const newArgv = {...argv, production: true, pkg};
 
     spinner.color = 'yellow';
     spinner.text = 'Running compiler...';
@@ -86,8 +86,8 @@ export default asyncCommand({
       // Be sure to show errors/warnings if present
       showStats(results);
       endMessage(results.toJson().assets);
-    } catch (err) {
-      console.error('\n' + err);
+    } catch (error) {
+      console.error('\n' + error);
     }
 
     // if (argv.json) {
