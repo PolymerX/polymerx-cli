@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/PolymerX/polymerx-cli/compare/v0.3.3...v0.3.4) (2018-09-28)
+
+
+### Bug Fixes
+
+* **package:** update babel-loader to version 8.0.0 ([baa1470](https://github.com/PolymerX/polymerx-cli/commit/baa1470))
+* **package:** update babel-loader to version 8.0.1 ([37fd53c](https://github.com/PolymerX/polymerx-cli/commit/37fd53c))
+* **package:** update babel-loader to version 8.0.4 ([c975a19](https://github.com/PolymerX/polymerx-cli/commit/c975a19)), closes [#115](https://github.com/PolymerX/polymerx-cli/issues/115)
+* **package:** update console-clear to version 1.1.1 ([9a82079](https://github.com/PolymerX/polymerx-cli/commit/9a82079))
+* **package:** update execa to version 0.11.0 ([8e89320](https://github.com/PolymerX/polymerx-cli/commit/8e89320))
+* **package:** update execa to version 1.0.0 ([3963947](https://github.com/PolymerX/polymerx-cli/commit/3963947))
+* **package:** update inquirer to version 6.2.0 ([d0d1e71](https://github.com/PolymerX/polymerx-cli/commit/d0d1e71))
+* **package:** update webpack to version 4.17.0 ([b5b7a05](https://github.com/PolymerX/polymerx-cli/commit/b5b7a05))
+* **package:** update webpack to version 4.17.1 ([aedb6c7](https://github.com/PolymerX/polymerx-cli/commit/aedb6c7))
+* **package:** update webpack to version 4.17.2 ([8bf206e](https://github.com/PolymerX/polymerx-cli/commit/8bf206e))
+* **package:** update webpack to version 4.17.3 ([511f09f](https://github.com/PolymerX/polymerx-cli/commit/511f09f))
+* **package:** update webpack to version 4.18.0 ([6a29ebe](https://github.com/PolymerX/polymerx-cli/commit/6a29ebe))
+* **package:** update webpack to version 4.18.1 ([eea0554](https://github.com/PolymerX/polymerx-cli/commit/eea0554))
+* **package:** update webpack to version 4.19.0 ([deb3361](https://github.com/PolymerX/polymerx-cli/commit/deb3361))
+* **package:** update webpack to version 4.20.2 ([679aa01](https://github.com/PolymerX/polymerx-cli/commit/679aa01)), closes [#110](https://github.com/PolymerX/polymerx-cli/issues/110)
+* **package:** update webpack-dev-server to version 3.1.6 ([3cc2104](https://github.com/PolymerX/polymerx-cli/commit/3cc2104))
+* **package:** update webpack-dev-server to version 3.1.7 ([0309183](https://github.com/PolymerX/polymerx-cli/commit/0309183))
+* **package:** update webpack-dev-server to version 3.1.8 ([b266f3c](https://github.com/PolymerX/polymerx-cli/commit/b266f3c))
+* **package:** update webpack-dev-server to version 3.1.9 ([95df85b](https://github.com/PolymerX/polymerx-cli/commit/95df85b))
+* **package:** update workbox-webpack-plugin to version 3.5.0 ([3296ac6](https://github.com/PolymerX/polymerx-cli/commit/3296ac6))
+* **package:** update workbox-webpack-plugin to version 3.6.1 ([0828462](https://github.com/PolymerX/polymerx-cli/commit/0828462))
+* **package:** update workbox-webpack-plugin to version 3.6.2 ([639f789](https://github.com/PolymerX/polymerx-cli/commit/639f789))
+
+
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/PolymerX/polymerx-cli/compare/v0.3.2...v0.3.3) (2018-08-19)
 
