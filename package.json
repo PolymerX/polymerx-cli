@@ -96,7 +96,7 @@
     "rimraf": "2.6.2",
     "standard-version": "4.4.0",
     "uuid": "3.3.2",
-    "xo": "0.21.1"
+    "xo": "0.22.0"
   },
   "ava": {
     "files": [
