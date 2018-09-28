@@ -16,7 +16,7 @@ const startChrome = async () => {
 
 const loadPage = async (browser, url) => {
   const page = await browser.newPage();
-  return new Promise(async resolve => {
+  return new Promise(async resolve => { // eslint-disable-line no-async-promise-executor
     await page.goto(url, {waitUntil: 'networkidle0'});
     resolve(page);
   });

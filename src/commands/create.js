@@ -10,7 +10,7 @@ import replaceOwner from '../lib/replace-owner';
 import isMissing from '../lib/is-missing';
 import asyncCommand from '../lib/async-command';
 import which from '../lib/which';
-import error from '../lib/error';
+import errorAlert from '../lib/error';
 import isDir from '../lib/is-dir';
 import extractTar from '../lib/extract-tar';
 import install from '../lib/install';
@@ -31,12 +31,12 @@ const completeData = async (argv, spinner) => {
     spinner.info('Alternatively, run `polymerx create --help` for usage info.');
   }
   const response = await prompt(questions);
-  return Object.assign({}, response);
+  return {...response};
 };
 
 const checkExistOrForce = async (exists, isForceEnabled, spinner) => {
   if (exists && !isForceEnabled) {
-    error(
+    errorAlert(
       `Refusing to overwrite current directory!
 Please specify a different destination or use the \`--force\` flag`, spinner
     );
@@ -47,12 +47,12 @@ Please specify a different destination or use the \`--force\` flag`, spinner
     const {enableForce} = await prompt({
       type: 'confirm',
       name: 'enableForce',
-      message: `You are using '--force'. Do you wish to continue?`,
+      message: 'You are using \'--force\'. Do you wish to continue?',
       default: false
     });
 
     if (!enableForce) {
-      error('Refusing to overwrite current directory!', spinner);
+      errorAlert('Refusing to overwrite current directory!', spinner);
       return process.exit(1);
     }
 
@@ -145,14 +145,14 @@ export default asyncCommand({
     const {errors} = validateName(packageName);
     if (errors) {
       errors.unshift(`Invalid package name: ${packageName}`);
-      error(errors.map(capitalize).join('\n  ~ '), spinner);
+      errorAlert(errors.map(capitalize).join('\n  ~ '), spinner);
       return process.exit(1);
     }
 
     // Attempt to fetch the `template`
-    const archive = await gittar.fetch(repo).catch(err => {
-      const finalErr = err || {message: 'An error occured while fetching template.'};
-      error(
+    const archive = await gittar.fetch(repo).catch(error => {
+      const finalErr = error || {message: 'An error occured while fetching template.'};
+      errorAlert(
         finalErr.code === 404 ? `Could not find repository: ${repo}` : finalErr.message, spinner
       );
       return process.exit(1);
@@ -166,7 +166,7 @@ export default asyncCommand({
     const keeps = await extractTar(archive, target);
     const isRepoEmpty = keeps.length <= 0;
     if (isRepoEmpty) {
-      error(`No \`template\` directory found within ${repo}!`, spinner);
+      errorAlert(`No \`template\` directory found within ${repo}!`, spinner);
       return process.exit();
     }
 
@@ -182,7 +182,7 @@ export default asyncCommand({
     const isYarn = argv.yarn &&
       await which('yarn')
         .catch(() => {
-          error('Yarn not found. Please remove the "--yarn" flag or install yarn.', spinner);
+          errorAlert('Yarn not found. Please remove the "--yarn" flag or install yarn.', spinner);
           process.exit(1);
         });
 

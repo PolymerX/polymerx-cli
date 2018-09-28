@@ -1,12 +1,12 @@
 
 import replace from 'replace-in-file';
 
-export default async (keeps, name, author) => {
+export default (keeps, name, author) => {
   const dict = new Map();
   ['name', 'short_name'].forEach(str => {
     dict.set(new RegExp(`"${str}": ".+"`, 'g'), `"${str}": "${name}"`);
   });
-  dict.set(new RegExp(`"author": ".+"`, 'g'), `"author": "${author}"`);
+  dict.set(new RegExp('"author": ".+"', 'g'), `"author": "${author}"`);
 
   for (const entry of keeps) {
     dict.forEach((v, regex) => {
