@@ -4,12 +4,11 @@
     ["env", {
       "loose": true,
       "targets": {
-        "node": 6
+        "node": 8
       }
 		}]
   ],
   "plugins": [
-		"syntax-dynamic-import",
-		"transform-object-rest-spread"
+    "syntax-object-rest-spread"
   ]
 }
