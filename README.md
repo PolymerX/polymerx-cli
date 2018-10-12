@@ -84,10 +84,11 @@ Easy development with `hot-reload` and "friendly" error layers.
 ```
 $ polymerx watch --help
 
-  --cwd         A directory to use instead of $PWD.              [string]   [default: .]
-  --src         Entry file (index.js)                            [string]   [default: "src"]
-  --port, -p    Port to start a server on                        [string]   [default: "8080"]
-  --host,       Hostname to start a server on                    [string]   [default: "0.0.0.0"]
+  --cwd           A directory to use instead of $PWD.              [string]   [default: .]
+  --src           Entry file (index.js)                            [string]   [default: "src"]
+  --config, -c    Path to custom polymerx.config.js.           [string]   [default: null]
+  --port, -p      Port to start a server on                        [string]   [default: "8080"]
+  --host,         Hostname to start a server on                    [string]   [default: "0.0.0.0"]
 ```
 
 > NOTE: You can run the dev server on a different port using `PORT=8091 polymerx watch`
@@ -103,9 +104,31 @@ $ polymerx build --help
   --cwd             A directory to use instead of $PWD.          [string]   [default: .]
   --src             Entry file (index.js).                       [string]   [default: "src"]
   --dest            Directory root for output.                   [string]   [default: "dist"]
+  --config, -c      Path to custom polymerx.config.js.           [string]   [default: null]
   --workers, -w     Add a service worker to application.         [boolean]  [default: true]
   --clean           Clear output directory before building.      [boolean]  [default: true]
 ```
+
+## Custom Configuration
+
+### Webpack
+For customizing your `webpack` configuration create a `polymerx.config.js` what will exports a function like this:
+
+```js
+/**
+ * Function that mutates original webpack config.
+ * Supports asynchronous changes when promise is returned.
+ *
+ * @param {object} config - original webpack config.
+ * @param {object} env - options passed to CLI.
+ * @param {WebpackConfigHelpers} helpers - object with useful helpers when working with config.
+ **/
+export default function (config, env, helpers) {
+  /** you can change config here **/
+}
+```
+Since this we are using the [WebpackConfigHelpers](https://github.com/developit/preact-cli/blob/master/docs/webpack-helpers.md) by `preact-cli` you can checkout also their [awesome Wiki](https://github.com/developit/preact-cli/wiki/Config-Recipes)
+to get more info about the helper.
 
 ## About this tool
 
