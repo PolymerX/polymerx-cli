@@ -44,15 +44,11 @@ export default asyncCommand({
       description: 'Generate build statistics for analysis.',
       type: 'boolean',
       default: false
+    },
+    config: {
+      description: 'Path to custom polymerx.config.js',
+      alias: 'c'
     }
-    // TODO
-    // template: {
-    //   description: 'HTML template used by webpack'
-    // },
-    // config: {
-    //   description: 'Path to custom CLI config.',
-    //   alias: 'c'
-    // }
   },
 
   async handler(argv) {

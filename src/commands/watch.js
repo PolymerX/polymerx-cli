@@ -32,16 +32,11 @@ export default asyncCommand({
       description: 'Use HTTPS?',
       type: 'boolean',
       default: false
+    },
+    config: {
+      description: 'Path to custom polymerx.config.js',
+      alias: 'c'
     }
-    // TODO: using the HTML plugin for webpack we can provide a template
-    // template: {
-    //   description: 'HTML template used by webpack'
-    // },
-    // TODO: custom config
-    // config: {
-    //   description: 'Path to custom polymerx.config.js',
-    //   alias: 'c'
-    // }
   },
 
   async handler(argv) {
