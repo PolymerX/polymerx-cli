@@ -127,7 +127,7 @@ export default function (config, env, helpers) {
   /** you can change config here **/
 }
 ```
-Since this we are using the [WebpackConfigHelpers](https://github.com/developit/preact-cli/blob/master/docs/webpack-helpers.md) by `preact-cli` you can checkout also their [awesome Wiki](https://github.com/developit/preact-cli/wiki/Config-Recipes)
+Since we are using the [WebpackConfigHelpers](https://github.com/developit/preact-cli/blob/master/docs/webpack-helpers.md) by `preact-cli` you can checkout also their [awesome Wiki](https://github.com/developit/preact-cli/wiki/Config-Recipes)
 to get more info about the helper.
 
 ## About this tool
