@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/PolymerX/polymerx-cli/compare/v0.3.4...v0.4.0) (2018-10-14)
+
+
+### Bug Fixes
+
+* **package:** update copy-webpack-plugin to version 4.5.3 ([08a0d2c](https://github.com/PolymerX/polymerx-cli/commit/08a0d2c))
+
+
+### Features
+
+* check version on node and update notifier for cli ([fa3b91d](https://github.com/PolymerX/polymerx-cli/commit/fa3b91d))
+* support custom configuration polymerx.config.js ([49d7ad6](https://github.com/PolymerX/polymerx-cli/commit/49d7ad6))
+
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/PolymerX/polymerx-cli/compare/v0.3.3...v0.3.4) (2018-09-28)
 
