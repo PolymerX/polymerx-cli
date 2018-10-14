@@ -9,6 +9,7 @@ import DevServer from 'webpack-dev-server';
 import isDir from '../is-dir';
 import {endMessage, detailMessage, showStats} from './log-stats';
 
+import transformConfig from './transform-config';
 import webpackConfig from './webpack-base.config';
 
 const runProdCompiler = compiler => {
@@ -32,6 +33,11 @@ const runProdCompiler = compiler => {
 
 const devBuild = async argv => {
   const config = webpackConfig(argv);
+
+  if (argv.config) {
+    await transformConfig(argv, config);
+  }
+
   const userPort = Number(process.env.PORT || config.devServer.port) || 8080;
   const port = await getPort({port: userPort});
   const compiler = webpack(config);
@@ -65,8 +71,13 @@ const devBuild = async argv => {
   });
 };
 
-const prodBuild = argv => {
+const prodBuild = async argv => {
   const config = webpackConfig(argv);
+
+  if (argv.config) {
+    await transformConfig(argv, config);
+  }
+
   const compiler = webpack(config);
 
   return runProdCompiler(compiler);

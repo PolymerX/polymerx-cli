@@ -1,10 +1,9 @@
 const {resolve} = require('path');
-const uuid = require('uuid/v4');
 const execa = require('execa');
 
-const CLI = require.resolve('./../../dist/cli');
+const tmpDir = require('./tmp-dir');
 
-const tmpDir = () => resolve(__dirname, '../output', uuid());
+const CLI = require.resolve('./../../dist/cli');
 
 const run = (command, args, cwd) => {
   return execa(command, args.filter(Boolean), {cwd: cwd || resolve(__dirname)})
@@ -36,8 +35,8 @@ const watch = (appDir, host, port) => {
   return run('node', args, appDir).stdout;
 };
 
-const build = appDir => {
-  const args = [CLI, 'build'];
+const build = (appDir, customConf) => {
+  const args = [CLI, 'build'].concat(customConf ? `--c=${customConf}` : undefined);
   return run('node', args, appDir);
 };
 

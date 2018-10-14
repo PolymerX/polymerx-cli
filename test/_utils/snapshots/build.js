@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 const files = [
   'dist/assets/AnimatedSkeleton.svg',
   'dist/assets/icons/apple-touch-icon.png',
@@ -23,4 +25,7 @@ const files = [
   'dist/vendor/webcomponents-loader.js'
 ];
 
-module.exports = isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files;
+module.exports = {
+  snapBuild: isWin => isWin ? files.map(file => file.replace(/\//g, '\\')) : files,
+  customWebpack: '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Webpack App</title></head><body><h1>Custom Template</h1><script defer="defer" src="bundle.js"></script><script defer="defer" src="./vendor/webcomponents-loader.js"></script></body></html>'
+};

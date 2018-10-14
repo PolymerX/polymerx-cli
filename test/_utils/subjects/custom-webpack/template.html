@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title><%= htmlWebpackPlugin.options.title %></title>
+	</head>
+	<body>
+    <h1>Custom Template</h1>
+    <script defer src="<%= htmlWebpackPlugin.files.chunks['main'].entry %>"></script>
+    <script defer src="<%= htmlWebpackPlugin.options.paths.webcomponents %>"></script>
+	</body>
+</html>
