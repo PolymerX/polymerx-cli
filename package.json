@@ -74,7 +74,7 @@
     "inquirer": "6.2.0",
     "ora": "3.0.0",
     "phunctional": "0.2.1",
-    "pify": "4.0.0",
+    "pify": "4.0.1",
     "postcss-loader": "3.0.0",
     "raw-loader": "0.5.1",
     "replace-in-file": "3.4.2",
