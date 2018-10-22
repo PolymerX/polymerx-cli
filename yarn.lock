@@ -6197,9 +6197,9 @@ phunctional@0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/phunctional/-/phunctional-0.2.1.tgz#18073ef7afc77866ea8f55eeffce7efcfb798a43"
 
-pify@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.0.tgz#db04c982b632fd0df9090d14aaf1c8413cadb695"
+pify@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
