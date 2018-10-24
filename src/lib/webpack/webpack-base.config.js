@@ -171,7 +171,7 @@ const shared = argv => {
           loader: 'babel-loader',
           options: {
             presets: [[
-              require.resolve('babel-preset-env'),
+              require.resolve('@babel/preset-env'),
               {
                 targets: {
                   browsers: [
@@ -185,8 +185,8 @@ const shared = argv => {
               }
             ]],
             plugins: [
-              [require.resolve('babel-plugin-transform-object-rest-spread'), {useBuiltIns: true}],
-              [require.resolve('babel-plugin-syntax-dynamic-import')]
+              [require.resolve('@babel/plugin-syntax-object-rest-spread'), {useBuiltIns: true}],
+              [require.resolve('@babel/plugin-syntax-dynamic-import')]
             ]
           }
         }
