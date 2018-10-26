@@ -1,7 +1,7 @@
 {
   "comments": false,
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "loose": true,
       "targets": {
         "node": 8
@@ -9,6 +9,6 @@
 		}]
   ],
   "plugins": [
-    "syntax-object-rest-spread"
+    "@babel/plugin-syntax-object-rest-spread"
   ]
 }
