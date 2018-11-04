@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/PolymerX/polymerx-cli/compare/v0.4.0...v0.4.1) (2018-11-04)
+
+
+### Bug Fixes
+
+* **package:** update copy-webpack-plugin to version 4.5.4 ([57af1b7](https://github.com/PolymerX/polymerx-cli/commit/57af1b7))
+* **package:** update copy-webpack-plugin to version 4.6.0 ([5f609e2](https://github.com/PolymerX/polymerx-cli/commit/5f609e2))
+* **package:** update pify to version 4.0.1 ([ab54e34](https://github.com/PolymerX/polymerx-cli/commit/ab54e34))
+* **package:** update script-ext-html-webpack-plugin to version 2.1.0 ([f662911](https://github.com/PolymerX/polymerx-cli/commit/f662911)), closes [#136](https://github.com/PolymerX/polymerx-cli/issues/136)
+* **package:** update script-ext-html-webpack-plugin to version 2.1.1 ([b248680](https://github.com/PolymerX/polymerx-cli/commit/b248680))
+* **package:** update webpack to version 4.21.0 ([8e33206](https://github.com/PolymerX/polymerx-cli/commit/8e33206))
+* **package:** update webpack to version 4.22.0 ([ce0c924](https://github.com/PolymerX/polymerx-cli/commit/ce0c924))
+* **package:** update webpack to version 4.23.0 ([6a01ae8](https://github.com/PolymerX/polymerx-cli/commit/6a01ae8))
+* **package:** update webpack to version 4.23.1 ([e1dce4e](https://github.com/PolymerX/polymerx-cli/commit/e1dce4e))
+* **package:** update webpack-dev-server to version 3.1.10 ([daca5bc](https://github.com/PolymerX/polymerx-cli/commit/daca5bc))
+* **package:** update workbox-webpack-plugin to version 3.6.3 ([3b1011a](https://github.com/PolymerX/polymerx-cli/commit/3b1011a))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/PolymerX/polymerx-cli/compare/v0.3.4...v0.4.0) (2018-10-14)
 
