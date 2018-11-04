@@ -7386,10 +7386,9 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-script-ext-html-webpack-plugin@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-2.1.0.tgz#b14d42eeb567c05129a8bc48e2a7ff75843bc5c0"
-  integrity sha512-I3+8Bu93pRFIMGj/xPcsOmkQh7xLNRYE9xJMEyoQkeVAz+aXRBV8iC/hrvw34CWQalL7eff1HG5yCzTXKfGokw==
+script-ext-html-webpack-plugin@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-2.1.1.tgz#4874dfa322f8ae43fee867d019a1f4959b7e8d72"
   dependencies:
     debug "^4.1.0"
 
