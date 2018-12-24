@@ -7,6 +7,6 @@ test('correctly check that yarn exist', async t => {
 });
 
 test('correctly throws when check for "nothing"', async t => {
-  const err = await t.throws(which('nothing'));
+  const err = await t.throwsAsync(() => which('nothing'));
   t.is(err.message, 'not found: nothing');
 });
