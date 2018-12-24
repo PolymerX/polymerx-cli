@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/PolymerX/polymerx-cli/compare/v0.4.1...v0.4.2) (2018-12-24)
+
+
+### Bug Fixes
+
+* **package:** update [@babel](https://github.com/babel)/core to version 7.1.5 ([6b07f4c](https://github.com/PolymerX/polymerx-cli/commit/6b07f4c))
+* **package:** update [@babel](https://github.com/babel)/core to version 7.1.6 ([312b2ff](https://github.com/PolymerX/polymerx-cli/commit/312b2ff))
+* **package:** update [@babel](https://github.com/babel)/core to version 7.2.2 ([474f226](https://github.com/PolymerX/polymerx-cli/commit/474f226)), closes [#156](https://github.com/PolymerX/polymerx-cli/issues/156)
+* **package:** update [@babel](https://github.com/babel)/plugin-syntax-dynamic-import to version 7.2.0 ([c159e76](https://github.com/PolymerX/polymerx-cli/commit/c159e76)), closes [#156](https://github.com/PolymerX/polymerx-cli/issues/156)
+* **package:** update [@babel](https://github.com/babel)/plugin-syntax-object-rest-spread to version 7.2.0 ([1ef198a](https://github.com/PolymerX/polymerx-cli/commit/1ef198a)), closes [#156](https://github.com/PolymerX/polymerx-cli/issues/156)
+* **package:** update [@babel](https://github.com/babel)/preset-env to version 7.1.5 ([0872fcf](https://github.com/PolymerX/polymerx-cli/commit/0872fcf))
+* **package:** update [@babel](https://github.com/babel)/preset-env to version 7.1.6 ([7cb1a23](https://github.com/PolymerX/polymerx-cli/commit/7cb1a23))
+* **package:** update [@babel](https://github.com/babel)/preset-env to version 7.2.0 ([33f206f](https://github.com/PolymerX/polymerx-cli/commit/33f206f)), closes [#156](https://github.com/PolymerX/polymerx-cli/issues/156)
+* **package:** update [@babel](https://github.com/babel)/preset-env to version 7.2.3 ([6504723](https://github.com/PolymerX/polymerx-cli/commit/6504723)), closes [#160](https://github.com/PolymerX/polymerx-cli/issues/160)
+* **package:** update clean-webpack-plugin to version 1.0.0 ([72ab5c8](https://github.com/PolymerX/polymerx-cli/commit/72ab5c8))
+* **package:** update get-port to version 4.1.0 ([f9ea040](https://github.com/PolymerX/polymerx-cli/commit/f9ea040))
+* **package:** update inquirer to version 6.2.1 ([507c2af](https://github.com/PolymerX/polymerx-cli/commit/507c2af))
+* **package:** update raw-loader to version 1.0.0 ([72ca342](https://github.com/PolymerX/polymerx-cli/commit/72ca342))
+* **package:** update script-ext-html-webpack-plugin to version 2.1.2 ([92b9909](https://github.com/PolymerX/polymerx-cli/commit/92b9909))
+* **package:** update script-ext-html-webpack-plugin to version 2.1.3 ([3252ed2](https://github.com/PolymerX/polymerx-cli/commit/3252ed2))
+* **package:** update webpack to version 4.25.1 ([4fa3700](https://github.com/PolymerX/polymerx-cli/commit/4fa3700)), closes [#141](https://github.com/PolymerX/polymerx-cli/issues/141)
+* **package:** update webpack to version 4.26.0 ([447b6eb](https://github.com/PolymerX/polymerx-cli/commit/447b6eb))
+* **package:** update webpack to version 4.26.1 ([c53abe6](https://github.com/PolymerX/polymerx-cli/commit/c53abe6))
+* **package:** update webpack to version 4.27.0 ([36e3c27](https://github.com/PolymerX/polymerx-cli/commit/36e3c27))
+* **package:** update webpack to version 4.27.1 ([fbe8633](https://github.com/PolymerX/polymerx-cli/commit/fbe8633))
+* **package:** update webpack to version 4.28.0 ([7bf7a5e](https://github.com/PolymerX/polymerx-cli/commit/7bf7a5e))
+* **package:** update webpack to version 4.28.1 ([8d93cb9](https://github.com/PolymerX/polymerx-cli/commit/8d93cb9))
+* **package:** update webpack to version 4.28.2 ([f9a011a](https://github.com/PolymerX/polymerx-cli/commit/f9a011a))
+* **package:** update webpack-dev-server to version 3.1.13 ([422ea63](https://github.com/PolymerX/polymerx-cli/commit/422ea63)), closes [#164](https://github.com/PolymerX/polymerx-cli/issues/164)
+* **package:** update webpack-merge to version 4.1.5 ([1ce2be7](https://github.com/PolymerX/polymerx-cli/commit/1ce2be7))
+* removed support for node 9 ([f2973eb](https://github.com/PolymerX/polymerx-cli/commit/f2973eb))
+* wrong test, engines and avoid ignore stdio during install modules ([1845e5c](https://github.com/PolymerX/polymerx-cli/commit/1845e5c))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/PolymerX/polymerx-cli/compare/v0.4.0...v0.4.1) (2018-11-04)
 
