@@ -20,7 +20,7 @@ checkVersion();
 
 updateNotifier({pkg}).notify();
 
-/* eslint-disable no-unused-expressions */
+/* eslint-disable-next-line no-unused-expressions */
 yargs
   .command(create)
   .command(watch)
