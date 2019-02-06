@@ -30,6 +30,7 @@ const completeData = async (argv, spinner) => {
     spinner.warn('Missing commang arguments. Prompting...');
     spinner.info('Alternatively, run `polymerx create --help` for usage info.');
   }
+
   const response = await prompt(questions);
   return {...response};
 };

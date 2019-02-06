@@ -37,6 +37,23 @@ Or with NPM
 $ npm install -g polymerx-cli
 ```
 
+## Switch from `polymer-cli` and `pwa-starter-kit`
+
+If you want to change your builder from the official `polymer-cli` for `pwa-starter-kit` to our `polymerx-cli` you need to make sure your `imports` are correctly declared without `relative` path.
+
+Also, you need to make sure your `chunksSortMode` is set to `none` for the `HtmlWebpackPlugin` because a known bug [html-webpack-plugin#870](https://github.com/jantimon/html-webpack-plugin/issues/870).
+
+Create a `polymerx.config.js` and add the following code:
+
+```js
+export default function (config, env, helpers) {
+  let { plugin } = helpers.getPluginsByName(config, "HtmlWebpackPlugin")[0];
+  plugin.options.chunksSortMode = 'none'
+}
+```
+
+<small>Refer to [polymerx-cli#179](https://github.com/PolymerX/polymerx-cli/issues/179) for more info about the topic.</small>
+
 ## Templates
 
 Official templates are available at https://github.com/Polymerx-skeleton-templates
