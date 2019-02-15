@@ -97,7 +97,7 @@
     "nyc": "13.2.0",
     "puppeteer": "1.12.2",
     "rimraf": "2.6.3",
-    "standard-version": "4.4.0",
+    "standard-version": "5.0.0",
     "uuid": "3.3.2",
     "xo": "0.24.0"
   },
