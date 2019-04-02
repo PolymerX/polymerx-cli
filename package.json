@@ -89,7 +89,7 @@
     "yargs": "13.2.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.2.3",
+    "@babel/cli": "7.4.3",
     "ava": "1.2.1",
     "codecov": "3.2.0",
     "glob": "7.1.3",
