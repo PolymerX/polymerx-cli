@@ -71,7 +71,7 @@
     "gittar": "0.1.1",
     "html-webpack-exclude-assets-plugin": "0.0.7",
     "html-webpack-plugin": "3.2.0",
-    "inquirer": "6.2.2",
+    "inquirer": "7.0.0",
     "ora": "3.4.0",
     "phunctional": "0.2.1",
     "pify": "4.0.1",
