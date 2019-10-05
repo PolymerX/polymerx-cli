@@ -82,8 +82,8 @@ export default asyncCommand({
       // Be sure to show errors/warnings if present
       showStats(results);
       endMessage(results.toJson().assets);
-    } catch (error) {
-      console.error('\n' + error);
+    } catch (error_) {
+      console.error('\n' + error_);
     }
 
     // if (argv.json) {

@@ -11,7 +11,7 @@ export default async function (env, config) {
 
   try {
     await fs.stat(transformerPath);
-  } catch (error) {
+  } catch (_) {
     if (env.config) {
       throw new Error(`polymerx-cli config could not be loaded!\nFile ${env.config} not found.`);
     }

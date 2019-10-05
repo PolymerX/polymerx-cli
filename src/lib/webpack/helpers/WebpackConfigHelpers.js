@@ -176,7 +176,7 @@ export default class WebpackConfigHelpers {
     try {
       fs.statSync(template);
       isPath = true;
-    } catch (error) {}
+    } catch (_) {}
 
     const templatePath = isPath ? `!!ejs-loader!${path.resolve(this._cwd, template)}` : template;
     const {

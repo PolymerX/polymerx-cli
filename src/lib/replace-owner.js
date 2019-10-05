@@ -6,6 +6,8 @@ export default (keeps, name, author) => {
   ['name', 'short_name'].forEach(str => {
     dict.set(new RegExp(`"${str}": ".+"`, 'g'), `"${str}": "${name}"`);
   });
+
+  /* eslint-disable-next-line prefer-regex-literals */
   dict.set(new RegExp('"author": ".+"', 'g'), `"author": "${author}"`);
 
   for (const entry of keeps) {

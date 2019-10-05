@@ -23,7 +23,7 @@ const getAuthor = async () => {
   return `${user ? user.name : ''} <${user ? user.email : ''}>`;
 };
 
-const capitalize = str => str.charAt(0).toUpperCase() + str.substring(1);
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 const completeData = async (argv, spinner) => {
   const questions = isMissing(argv);
   if (questions.length > 0) {

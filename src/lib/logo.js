@@ -19,7 +19,7 @@ const textify = (logoASCII, text, useColor) => {
     const index = words[i].indexOf('\n');
     if (~index) {
       words
-        .splice(i, 1, words[i].substring(0, index), '\n', words[i].substring(index + 1));
+        .splice(i, 1, words[i].slice(0, index), '\n', words[i].slice(index + 1));
       i += 2;
     }
   }
@@ -66,7 +66,7 @@ const textify = (logoASCII, text, useColor) => {
   if (useColor) {
     for (let index = 3; index <= height; index++) {
       logo[index] = color(
-        COLOR_CODE, logo[index].substring(0, start)) + color(0, logo[index].substring(start)
+        COLOR_CODE, logo[index].slice(0, start)) + color(0, logo[index].slice(start)
       );
     }
   }
