@@ -3,9 +3,8 @@
 
 const done = (err, result) => {
   return err ?
-    process.stderr.write(String(err) + '\n') &&
-    process.exit(err.exitCode || 1) :
-    result ? process.stdout.write(result + '\n') : process.exit(0);
+    (process.stderr.write(String(err) + '\n') && process.exit(err.exitCode || 1)) :
+    (result ? process.stdout.write(result + '\n') : process.exit(0));
 };
 
 export default function asyncCommand(options) {

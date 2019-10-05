@@ -1,7 +1,7 @@
 const colors = require('chalk');
 const pkg = require('./../package.json');
 
-const version = parseFloat(process.version.substr(1), 10);
+const version = parseFloat(process.version.slice(1), 10);
 const minimum = parseFloat(pkg.engines.node.match(/\d+/g).join('.'), 10);
 
 const write = message => process.stdout.write(message) + '\n';
