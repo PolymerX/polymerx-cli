@@ -64,7 +64,7 @@
     "copy-webpack-plugin": "5.0.3",
     "devcert-san": "0.3.3",
     "ejs-loader": "0.3.5",
-    "execa": "1.0.0",
+    "execa": "3.1.0",
     "find-node-modules": "2.0.0",
     "get-port": "5.0.0",
     "git-user-local": "0.2.0",
