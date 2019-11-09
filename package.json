@@ -57,7 +57,7 @@
     "@babel/preset-env": "7.6.2",
     "@babel/register": "7.6.2",
     "babel-loader": "8.0.6",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "clean-webpack-plugin": "1.0.0",
     "cli-table": "0.3.1",
     "console-clear": "1.1.1",
